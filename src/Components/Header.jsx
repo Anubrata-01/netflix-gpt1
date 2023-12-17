@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserDetails, removeUserDetails } from "../Redux Store/CreateSlice";
 import { useEffect } from "react";
+import { Button } from "evergreen-ui";
 const Header = () => {
 
   const navigate = useNavigate();
@@ -40,35 +41,33 @@ const Header = () => {
   return (
     <div className=" sticky top-0 w-full z-20 ">
       <div className=" w-120  flex justify-between bg-gradient-to-r from-transparent ">
-        <div className="ml-10">
+        <div className="ml-10 mt-3">
           <img
             className="w-45 h-12"
             src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
             alt="Netflis Img"
           />
         </div>
-        <div className=" mt-2 mr-10">
+        <div className=" mt-4 mr-10">
           <ul>
             <li>
               <NavLink to={"/home/login"}>
                 {sign ? (
-                  <button
-                    className="bg-red-700 w-15  rounded"
-                    
-                  >
-                    <p className="w-15 p-1 text-sm rounded-md  text-white font-semibold">
-                      Sign in
-                    </p>
-                  </button>
+                   <Button marginRight={16}  appearance="primary" intent="danger">
+                   SignIn
+                 </Button>
                 ) : (
-                  <button
-                    className="bg-red-700 w-15  rounded"
-                    onClick={handleSignout}
-                  >
-                    <p className="w-15 p-1 text-sm rounded-md  text-white font-semibold">
-                      Sign Out
-                    </p>
-                  </button>
+                  // <button
+                  //   className="bg-red-700 w-15  rounded"
+                  //   onClick={handleSignout}
+                  // >
+                  //   <p className="w-15 p-1 text-sm rounded-md  text-white font-semibold">
+                  //     Sign Out
+                  //   </p>
+                  // </button>
+                  <Button marginRight={16} onClick={handleSignout} appearance="primary" intent="danger">
+        SignOut
+      </Button>
                 )}
 
               </NavLink>

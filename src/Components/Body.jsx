@@ -2,10 +2,12 @@ import React from 'react'
 import Browse from './Browse';
 import { Login } from './Login';
 import Home from './Home';
-import MovieDetails from './MovieContainer/MovieDetails';
+import ContainerMovieDetails from './MovieContainer/ContainerMovieDetails';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import ActorProfile from './MovieContainer/ActorProfile';
+import Similar from './MovieContainer/Similar';
+import CurrentMovieVideos from './MovieContainer/CurrentMovieVideos';
 const Body = () => {
     const AppRouter=createBrowserRouter([
         {
@@ -21,15 +23,21 @@ const Body = () => {
             element:<Browse/>
         },
         {
-            path:"/movie/:userId",
-            element:<MovieDetails/>
+            path:"/browse/movie/:userId",
+            element:<ContainerMovieDetails/>,
+            
         },
         {
             path:"/movie/actor",
             element:<ActorProfile/>
+            
 
+        },
+        {
+            path:"/browse/similar/:userId",
+            element:<ContainerMovieDetails/>
         }
-
+        
     ])
 
 

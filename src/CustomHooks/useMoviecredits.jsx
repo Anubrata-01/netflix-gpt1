@@ -8,8 +8,8 @@ const useMoviecredits = () => {
      const { userId } = useParams();
     const dispatch=useDispatch()
     const credits=useSelector((store)=>store?.movie?.movieCredits)
-    const cast=useSelector((store)=>store?.movie?.movieCredits?.cast)
-    console.log(cast)
+    // const cast=useSelector((store)=>store?.movie?.movieCredits?.cast)
+    // console.log(cast)
     console.log(credits)
 
     const movieCredits="https://api.themoviedb.org/3/movie/"+userId +"/credits"

@@ -12,7 +12,9 @@ import {
 } from "firebase/auth";
 import { auth } from "../Utilities/Firebase";
 import { addUserDetails } from "../Redux Store/CreateSlice";
+
 export function SignInThree() {
+
   const navigate=useNavigate()
   const dispatch=useDispatch()
   const name=useRef(null);
@@ -90,7 +92,7 @@ export function SignInThree() {
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
         <div className="xl:mx-auto xl:w-70 xl:max-w-sm 2xl:max-w-md">
           <div className="mb-2 flex justify-center">
-            <svg
+            {/* <svg
               viewBox="0 0 90 146"
               width="90"
               height="90"
@@ -106,7 +108,7 @@ export function SignInThree() {
                   fill="red"
                 ></path>
               </g>
-            </svg>
+            </svg> */}
           </div>
           <h2 className="text-center text-2xl font-bold leading-tight text-red-700">
             {text2}
@@ -116,7 +118,7 @@ export function SignInThree() {
 
             <button onClick={handleFormbtn} className=" mt-2.5 ml-4">
               {/* <a className="font-semibold text-sm  text-blue-800 transition-all duration-200 hover:underline"> */}
-               <p className="text-white">
+               <p className="text-white text-sm">
                {text1}
                 </p> 
               {/* </a> */}

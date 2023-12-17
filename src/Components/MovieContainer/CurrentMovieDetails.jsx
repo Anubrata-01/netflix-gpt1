@@ -1,52 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { Api_options } from "../constant";
-import { useParams } from "react-router-dom";
-import useMoviecredits from "../../CustomHooks/useMoviecredits";
-import { useSelector } from "react-redux";
-import CastSection from "./CastSection";
-import CurrentMovieVideos from "./CurrentMovieVideos";
-const MovieDetails = () => {
-  const [movieDetails, setMovieDetails] = useState(null);
-  const { userId } = useParams();
-  const Url = "https://image.tmdb.org/t/p/w200";
-  useMoviecredits()
+import React from 'react'
+import useCurrentMovieDetails from '../../CustomHooks/useCurrentMovieDetails'
+import { useSelector } from 'react-redux';
+import PopOverComponent from '../../Utilities/PopOverComponent';
+import useMoviecredits from '../../CustomHooks/useMoviecredits';
+
+const CurrentMovieDetails = () => {
+    useCurrentMovieDetails();
+    useMoviecredits()
+    const data=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieDetails);
   const cast=useSelector((store)=>store?.movie?.movieCredits?.cast)
-  const fetchMovieById = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/" + userId,
-      Api_options
-    );
-    const json = await data.json();
-    setMovieDetails(json);
-  };
-  
-  useEffect(() => {
-    fetchMovieById();
-  }, []);
+//   useCurrentMovieDetails();
+    if(data===null){
+        return null
+    }
 
-  if (!movieDetails) {
-    return null;
-  }
-  console.log(movieDetails);
-
-  const {
-    poster_path,
-    overview,
-    tagline,
-    title,
-    vote_average,
-    release_date,
-    status,
-    runtime,
-    genres
-  } = movieDetails;
-  const data=cast.filter((item)=>item?.known_for_department
+    const {
+        poster_path,
+        overview,
+        tagline,
+        title,
+        vote_average,
+        release_date,
+        status,
+        runtime,
+        genres
+      } = data;
+        const director=cast?.filter((item)=>item?.known_for_department
 ==="Directing"  )
-console.log(data)
+  const Url = "https://image.tmdb.org/t/p/w200";
 
   return (
-    <div className="w-full h-full bg-slate-600">
-      <div className="flex ml-52  ">
+    
+        <div className='flex ml-52'>
         <div className="mt-5">
           <img
             className="rounded-lg w-full h-full"
@@ -71,7 +56,7 @@ console.log(data)
               {vote_average.toFixed(1)} star
             </p>
             <p className=" ml-5 text-white text-sm font-medium">
-              Watch trailer
+              <PopOverComponent/>
             </p>
           </div>
           <div className="pt-1">
@@ -93,7 +78,7 @@ console.log(data)
           <div className="flex text-sm font-semibold text-white pt-2">
             Director:
             {
-              data.map((item)=>(
+              director?.map((item)=>(
                 <div key={item.id} className="flex pl-3 text-sm text-white">
                   <p>{item.name}</p>
                 </div>
@@ -102,14 +87,8 @@ console.log(data)
           </div>
         </div>
       </div>
-      <div>
-      <p className='ml-52 mt-5 text-lg text-teal-500 font-bold'>Cast:</p>
+    
+  )
+}
 
-      </div>
-      <CastSection userId={userId}/> 
-      <CurrentMovieVideos/>
-    </div>
-  );
-};
-
-export default MovieDetails;
+export default CurrentMovieDetails
