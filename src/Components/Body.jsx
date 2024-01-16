@@ -6,8 +6,10 @@ import ContainerMovieDetails from './MovieContainer/ContainerMovieDetails';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import ActorProfile from './MovieContainer/ActorProfile';
-import Similar from './MovieContainer/Similar';
-import CurrentMovieVideos from './MovieContainer/CurrentMovieVideos';
+// import Tvshow from './MovieContainer/Tvshow';
+import Movies from './MovieContainer/Movies';
+import GenreSection from './MovieContainer/GenreSection';
+import MyList from './Page/MyList';
 const Body = () => {
     const AppRouter=createBrowserRouter([
         {
@@ -30,12 +32,22 @@ const Body = () => {
         {
             path:"/movie/actor",
             element:<ActorProfile/>
-            
-
         },
         {
             path:"/browse/similar/:userId",
             element:<ContainerMovieDetails/>
+        },
+        {
+            path:"/browse/movies",
+            element:<Movies/>
+        },
+        {
+            path:"/browse/movies/:genreId",
+            element:<GenreSection/>
+        },
+        {
+            path:"/list",
+            element:<MyList/>
         }
         
     ])

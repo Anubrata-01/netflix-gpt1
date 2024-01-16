@@ -1,20 +1,12 @@
-import React from 'react'
-import MovieList from './MovieList'
+import React from "react";
+import MovieList from "./MovieList";
 
-const SecondaryContainer = () => {
+const SecondaryContainer = ({ movies, movies1, movies2 }) => {
   return (
-    <div className='w-full bg-black relative -top-40 -z-2 pl-0'>
-      <MovieList/>
-      {/* 
-      Movie List
-      - Tranding movies Section
-      - Bollywood Movies
-      - Romantic
-      - many other genre
-       */}
-    
+    <div className="w-full bg-black relative">
+      <MovieList movies={movies} movies1={movies1} movies2={movies2} />
     </div>
-  )
-}
+  );
+};
 
-export default SecondaryContainer
+export default SecondaryContainer;

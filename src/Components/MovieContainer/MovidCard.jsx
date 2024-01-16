@@ -1,13 +1,22 @@
 import React from "react";
-const MovidCard = ({ path }) => {
-  const Url = "https://image.tmdb.org/t/p/w200";
+import { NavLink } from "react-router-dom";
+const MovidCard = ({ moviedetails }) => {
+  const Url = "https://image.tmdb.org/t/p/w500";
   return (
-      
-      <div className=" relative w-40 pr-8 rounded-lg">
-          <img className="rounded-md" src={Url + path} alt="" />
+    <div>
+      <div className="w-[175px] h-[114px] relative">
+        <NavLink
+          key={moviedetails?.id}
+          to={"/browse/movie/" + moviedetails?.id}
+        >
+          <img
+            className="w-full h-[114px] object-cover rounded-sm"
+            src={Url + moviedetails?.poster_path}
+            alt=""
+          />
+        </NavLink>
       </div>
-     
-   
+    </div>
   );
 };
 

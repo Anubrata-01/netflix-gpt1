@@ -10,12 +10,12 @@ const SimilarMovieSection = () => {
     )
     console.log(Similar)
   return (
-    <div className='ml-52 mt-2 flex'>
+    <div className='ml-48 mt-2 flex'>
         {
         Similar?.results?.map((similar)=>(
          
             <NavLink key={similar?.id}  onClick={()=>navigate(`/browse/movie/${similar?.id}`)}>
-                <MovidCard path={similar?.poster_path}/>
+                <MovidCard path={similar?.poster_path} title={similar?.title}/>
              {/* navigate("/") */}
             </NavLink>
             

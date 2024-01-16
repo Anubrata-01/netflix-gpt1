@@ -6,12 +6,12 @@ import {
   addMoviestotopRated,
 } from "../Redux Store/movieSlice";
 import { useEffect } from "react";
-const useMoviefetch = () => {
+const useMoviefetch = (value=2) => {
   const dispatch = useDispatch();
   const movies = useSelector((store) => store.movie);
-  const Now_PlayingUrl = `https://api.themoviedb.org/3/movie/now_playing`;
-  const Popular = "https://api.themoviedb.org/3/movie/popular";
-  const Top_Rated = "https://api.themoviedb.org/3/movie/top_rated";
+  const Now_PlayingUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-Us&page=${value}`;
+  const Popular = `https://api.themoviedb.org/3/movie/popular?language=en-Us&page=${value}`;
+  const Top_Rated = `https://api.themoviedb.org/3/movie/top_rated?language=en-Us&page=${value}`;
   const fetchMovie = async (url, id) => {
     const data = await fetch(url, Api_options);
     const json = await data.json();

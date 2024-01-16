@@ -1,20 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import VideoBackground from './VideoBackground'
-import MainmovieDetails from './MainmovieDetails'
+import React, { useContext,} from "react";
+import VideoBackground from "./VideoBackground";
+import MainmovieDetails from "./MainmovieDetails";
+import { Context } from "../context";
 const MainContainer = () => {
-    const movies=useSelector((store)=>store.movie?.nowPlaying?.nowPlayingmovies)
-    if(!movies) return;
-    console.log(movies?.results[0])
-    const mainMovie=movies?.results[0]
-    const{original_title,overview,id
-    }=mainMovie 
+  const user = useContext(Context);
+  console.log(user);
   return (
-    <div className='relative -top-0'>
-        <MainmovieDetails title={original_title} overview={overview}/>
-        <VideoBackground videoId={id}/>
+    <div className="relative ">
+      <MainmovieDetails 
+      user={user}
+         />
+      <VideoBackground videoId={user?.selectedMovie?.id} />
     </div>
-  )
-}
+  );
+};
 
-export default MainContainer
+export default MainContainer;

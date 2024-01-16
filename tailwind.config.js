@@ -9,6 +9,9 @@ module.exports = {
       'footer-texture': "url('/img/footer-texture.png')",
     }
   },
+  corePlugins: {
+    aspectRatio: false,
+  },
   plugins: [
     function({addUtilities}){
       const newUtilities={
@@ -21,7 +24,9 @@ module.exports = {
         }
       }
       addUtilities(newUtilities)
-    }
+    },
+    require('@tailwindcss/aspect-ratio'),
+
   ],
 }
 

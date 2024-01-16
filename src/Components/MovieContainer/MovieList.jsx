@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import MovieSection from "./MovieSection";
-import { useSelector } from "react-redux";
+import { Context } from "../context";
 const MovieList = () => {
-  const movies = useSelector((store) => store.movie.nowPlaying.nowPlayingmovies);
-  const movies1 = useSelector((store) => store.movie.popular.popularMovies);
-  const movies2 = useSelector((store) => store.movie.topRated.topMovies);
+  const  movieList= useContext(Context);
   return (
     <>
-    <MovieSection movies={movies} title={"Now Playing"}/>
-    <MovieSection movies={movies1} title={"Popular"}/>
-    <MovieSection movies={movies2} title={"Top Rated"}/>
+    <MovieSection movies={movieList?.movies} title={"Now Playing"}/>
+    <MovieSection movies={movieList?.movies1} title={"Popular"}/>
+    <MovieSection movies={movieList?.movies2} title={"Top Rated"}/>
     </>
   );
 };

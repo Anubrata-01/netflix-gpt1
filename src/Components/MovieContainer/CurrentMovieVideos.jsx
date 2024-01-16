@@ -6,16 +6,14 @@ import useSimilarVideos from '../../CustomHooks/useSimilarVideos';
 const CurrentMovieVideos = () => {
   useCurrentMovieDetails();
   useSimilarVideos()
-  const data1=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer
-  )
-  const dat1=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieDetails
-  )
+  const data1=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer)
+  const dat1=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieDetails)
   console.log(data1)
   console.log(dat1)
 
 
   return (
-    <div className='ml-52 mt-3
+    <div className='ml-52 pb-3 mt-1
     grid grid-cols-3 gap-2'>
       {data1?.map((trailer)=>(
         <TrailerComponent trailerkey={trailer.key}/>

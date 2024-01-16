@@ -89,8 +89,8 @@ export function SignInThree() {
   
   return (
     <section>
-      <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-        <div className="xl:mx-auto xl:w-70 xl:max-w-sm 2xl:max-w-md">
+      <div className="flex items-center justify-center px-0 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-24">
+        <div className="xl:mx-auto xl:w-60 xl:max-w-sm 2xl:max-w-md">
           <div className="mb-2 flex justify-center">
             {/* <svg
               viewBox="0 0 90 146"

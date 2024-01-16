@@ -1,17 +1,19 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CastSection from "./CastSection";
 import CurrentMovieVideos from "./CurrentMovieVideos";
-import SimilarMovieSection from "./SimilarMovieSection";
-import CurrentMovieDetails from "./CurrentMovieDetails";
 import { useEffect, useState } from "react";
 import useMoviecredits from "../../CustomHooks/useMoviecredits";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Api_options } from "../constant";
 import PopOverComponent from "../../Utilities/PopOverComponent";
+import { FaArrowLeft } from "react-icons/fa";
+import { MdAddBox,MdFileDownloadDone } from "react-icons/md";
+import { addToMyList } from "../../Redux Store/movieSlice";
 const ContainerMovieDetails = () => {
-  // const { userId } = useParams();
-
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
   const [movieDetails, setMovieDetails] = useState(null);
+  const [isshow,setIsshow]=useState(false)
   const { userId } = useParams();
   const Url = "https://image.tmdb.org/t/p/w200";
   useMoviecredits()
@@ -28,7 +30,11 @@ const ContainerMovieDetails = () => {
   useEffect(() => {
     fetchMovieById();
   }, []);
-
+  const addToList=()=>{
+    dispatch(addToMyList(movieDetails))
+    setIsshow(!isshow)
+    console.log("ok")
+  }
   if (!movieDetails) {
     return null;
   }
@@ -43,15 +49,21 @@ const ContainerMovieDetails = () => {
     release_date,
     status,
     runtime,
-    genres
+    genres,
+    id
   } = movieDetails;
   const data=cast?.filter((item)=>item?.known_for_department
 ==="Directing"  )
 console.log(data)
 
+
   return (
-    <div className="w-full h-full bg-slate-800 ">
-      <div className="flex ml-52  ">
+    <div className="w-full h-full bg-slate-800 relative overflow-x-scroll no-scrollbar ">
+      <div className="">
+            <button onClick={()=>navigate("/browse")} className="absolute left-14 top-8"><FaArrowLeft size={25}/></button>
+
+      </div>
+      <div className="flex ml-52">
         <div className="mt-5">
           <img
             className="rounded-lg w-full h-full"
@@ -62,11 +74,11 @@ console.log(data)
         <div className="mt-4 ml-5 ">
           <div className="">
             <h1 className="text-lg text-white font-mono">{title}</h1>
-            <p className="text-xs">{tagline}</p>
+            <p className="text-xs text-white font-bold">{tagline}</p>
           </div>
           <div className="flex -ml-3 text-sm text-white pt-2">
               {
-                genres.map((item)=>
+                genres?.map((item)=>
                   <p key={item.id} className="pl-3">{item.name}</p>
                 )
               }
@@ -78,6 +90,9 @@ console.log(data)
             <p className=" ml-5 text-white text-sm font-medium">
               <PopOverComponent/>
             </p>
+            <button className="ml-5 -mt-1 text-white"onClick={addToList}>
+              {!isshow?<MdAddBox size={40}/>:<MdFileDownloadDone size={40}/>}
+            </button>
           </div>
           <div className="pt-1">
             <p className="text-sm text-white pt-1">
@@ -87,7 +102,8 @@ console.log(data)
               Release date:<span className="text-xs pl-2">{release_date}</span>
             </p>
             <p className="text-sm text-white pt-2">
-              RunTime:<span className="text-xs pl-2">{runtime}</span>
+              RunTime:<span className="text-xs pl-2">{runtime}m</span>
+
             </p>
           </div>
           <div className="max-w-2xl mx-auto pt-3">
@@ -109,8 +125,7 @@ console.log(data)
         </div>
       </div>
       <div>
-      <p className='ml-52 mt-5 text-lg text-teal-500 font-bold'>Cast:</p>
-
+      <p className='ml-52 mt-2 text-lg text-teal-500 font-bold'>Cast:</p>
       </div>
       <CastSection userId={userId}/> 
       <div>
@@ -118,14 +133,14 @@ console.log(data)
       <CurrentMovieVideos/>
 
       </div>
-      <div>
+      {/* <div>
         <p className="ml-52 mt-3 text-teal-500 font-bold">Similar Videos:</p>
-        <div className="w-full overflow-x-scroll no-scrollbar">
+        <div className="w-full bg-inherit overflow-x-scroll no-scrollbar">
         <SimilarMovieSection/>
 
         </div>
         {/* <SimilarMovieSection/> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 };
