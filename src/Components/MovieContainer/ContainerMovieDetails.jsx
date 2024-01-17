@@ -9,6 +9,7 @@ import PopOverComponent from "../../Utilities/PopOverComponent";
 import { FaArrowLeft } from "react-icons/fa";
 import { MdAddBox,MdFileDownloadDone } from "react-icons/md";
 import { addToMyList } from "../../Redux Store/movieSlice";
+import SimilarMovieSection from "./SimilarMovieSection";
 const ContainerMovieDetails = () => {
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -133,14 +134,14 @@ console.log(data)
       <CurrentMovieVideos/>
 
       </div>
-      {/* <div>
+      <div>
         <p className="ml-52 mt-3 text-teal-500 font-bold">Similar Videos:</p>
         <div className="w-full bg-inherit overflow-x-scroll no-scrollbar">
-        <SimilarMovieSection/>
+        <SimilarMovieSection similar={userId}/>
 
         </div>
-        {/* <SimilarMovieSection/> */}
-      {/* </div> */}
+       
+       </div>
     </div>
   );
 };
