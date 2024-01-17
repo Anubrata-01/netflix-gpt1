@@ -89,15 +89,15 @@ export function SignInThree() {
   
   return (
     <section>
-      <div className="flex items-center justify-center px-0 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-24">
-        <div className="xl:mx-auto xl:w-60 xl:max-w-sm 2xl:max-w-md">
+      <div className="flex items-center justify-center px-10 py-4 sm:px-6 sm:py-12 lg:px-8 lg:py-24 ">
+        <div className="xl:mx-auto xl:w-60 xl:max-w-sm 2xl:max-w-md w-80 sm:w-full">
           <div className="mb-2 flex justify-center">
           </div>
           <h2 className="text-center text-2xl font-bold leading-tight text-red-700">
             {text2}
           </h2>
-          <div className="flex ml-16 ">
-            <p className="mt-3 text-center text-sm text-red-600 ">{text3} </p>
+          <div className="flex ml-4 sm:ml-16 ">
+            <p className="mt-3  sm:ml text-center text-sm text-red-600 ">{text3} </p>
 
             <button onClick={handleFormbtn} className=" mt-2.5 ml-4">
               
@@ -122,7 +122,7 @@ export function SignInThree() {
                   <div className="mt-2">
                     <input
                       ref={name}
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
+                      className="flex h-10 w-auto sm:full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
                       type="text"
                       placeholder="Enter Your Name"
                     ></input>
