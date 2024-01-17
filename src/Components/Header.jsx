@@ -38,7 +38,7 @@ const Header = () => {
     });
   }, []);
   return (
-    <div className=" sticky top-0 w-full z-20 ">
+    <div className=" sticky top-0 w-full overflow-x-auto sm:w-full z-20 ">
       <div className="   sm:w-full flex justify-between bg-gradient-to-r from-transparent ">
         <div className="ml-3 mt-3 flex sm-ml-6">
           <img
