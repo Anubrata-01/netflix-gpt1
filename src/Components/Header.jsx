@@ -48,7 +48,7 @@ const Header = () => {
           />
           <div>
             {!sign ? (
-              <ul className=" list-none text-sm cursor-pointer flex w-full justify-between text-white mt-2.5 ml-1 md:ml-4 sm:ml-3 sm:text-sm">
+              <ul className=" list-none text-2xl cursor-pointer  w-full h-1/3 sm:h-full sm:w-full overflow-y-scroll no-scrollbar flex flex-col sm:flex sm:flex-row justify-between text-white mt-1 ml-1 sm:mt-2.5 md:ml-4 sm:ml-3 sm:text-sm">
                 <NavLink to={"/browse"}>Home</NavLink>
                 <NavLink to={"/browse/movies"}>Movies</NavLink>
                 <NavLink to={"/list"}>My List</NavLink>
