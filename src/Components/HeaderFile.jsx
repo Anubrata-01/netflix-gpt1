@@ -10,7 +10,7 @@ const HeaderFile = ({
   useAuthentic(path);
 
   return (
-    <div>
+    <div className="h-screen bg-black">
       <Header />
       <MainContainer />
       <SecondaryContainer/>
