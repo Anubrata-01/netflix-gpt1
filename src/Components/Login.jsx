@@ -11,7 +11,7 @@ export const Login = () => {
         <img className=' absolute w-full h-full object-cover' src="https://assets.nflxext.com/ffe/siteui/vlv3/d1532433-07b1-4e39-a920-0f08b81a489e/67033404-2df8-42e0-a5a0-4c8288b4da2c/IN-en-20231120-popsignuptwoweeks-perspective_alpha_website_small.jpg" alt="background img" />
           <div className=" bg-black/70 fixed  left-0 w-full h-screen"/>
         </div>
-        <div className=' absolute left-50 sm:left-80 top-32 sm:-top-10'>
+        <div className=' absolute left-50 sm:left-80 top-24 sm:-top-10'>
             <SignInThree/>
         </div>
     </div>

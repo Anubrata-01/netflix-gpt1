@@ -4,7 +4,7 @@ import About from './About'
 const Home = () => {
   return (
     <>  
-    <div className="w-[420px] h-[800px] overflow-x-hidden overflow-y-hidden sm:w-full sm:h-screen  relative ">
+    <div className="w-[420px] h-[730px] overflow-x-hidden overflow-y-hidden sm:w-full sm:h-screen  relative ">
         <Header/>
         <About/>
         <div className=''>
