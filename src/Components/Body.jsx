@@ -10,6 +10,7 @@ import ActorProfile from './MovieContainer/ActorProfile';
 import Movies from './MovieContainer/Movies';
 import GenreSection from './MovieContainer/GenreSection';
 import MyList from './Page/MyList';
+import SimilarContainer from './Page/SimilarContainer';
 const Body = () => {
     const AppRouter=createBrowserRouter([
         {
@@ -34,8 +35,8 @@ const Body = () => {
             element:<ActorProfile/>
         },
         {
-            path:"/browse/similar/:userId",
-            element:<ContainerMovieDetails/>
+            path:"/movie/similar/:userId",
+            element:<SimilarContainer/>
         },
         {
             path:"/browse/movies",
