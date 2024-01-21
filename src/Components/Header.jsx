@@ -9,6 +9,7 @@ import { addUserDetails, removeUserDetails } from "../Redux Store/CreateSlice";
 import { useEffect } from "react";
 import { Button } from "evergreen-ui";
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const data = useSelector((store) => store.app);
   const [sign, setSign] = useState(true);
@@ -37,8 +38,17 @@ const Header = () => {
       }
     });
   }, []);
+  window.onscroll=()=>{
+    setIsScrolled(window.scrollY === 0 ? false : true)
+    return ()=>(window.onscroll = null)
+  }
+  const headerStyle = {
+    background: isScrolled ? "#000" : "transparent", // Change background color based on scroll
+    transition: "background 0.3s ease", // Add a smooth transition effect
+  };
+  console.log(isScrolled)
   return (
-    <div className=" sticky top-0 w-full overflow-x-hidden sm:w-full z-20 ">
+    <div className=" sticky top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full z-20" style={headerStyle}>
       <div className="   sm:w-full flex justify-between bg-gradient-to-r from-transparent ">
         <div className="ml-3 mt-3 flex sm-ml-6">
           <img
