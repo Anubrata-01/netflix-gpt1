@@ -11,6 +11,7 @@ import Movies from './MovieContainer/Movies';
 import GenreSection from './MovieContainer/GenreSection';
 import MyList from './Page/MyList';
 import SimilarContainer from './Page/SimilarContainer';
+import Player from './Page/Player';
 const Body = () => {
     const AppRouter=createBrowserRouter([
         {
@@ -24,6 +25,11 @@ const Body = () => {
         {
             path:"/browse",
             element:<Browse/>
+        },
+        {
+            path:"/player",
+            element:<Player/>,
+            
         },
         {
             path:"/browse/movie/:userId",
