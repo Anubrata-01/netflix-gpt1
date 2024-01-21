@@ -26,6 +26,8 @@
     "router": "^1.3.8",
     "styled-components": "^6.1.1",
     "uuid": "^9.0.1",
+    "video.js": "^8.9.0",
+    "videojs-youtube": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
