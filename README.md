@@ -1,4 +1,4 @@
-# netflis-gpt
+# netflix-gpt
 - Create React app
 - configure Tailwind css
 - Routing of App
