@@ -89,15 +89,15 @@ export function SignInThree() {
   
   return (
     <section>
-      <div className="flex items-center justify-center px-10 py-4 sm:px-6 sm:py-12 lg:px-8 lg:py-24 ">
+      <div className=" relative left-50 sm:left-80 -top-2 flex items-center justify-center px-10 py-20 sm:px-6 sm:py-12 ">
         <div className=" w-80 sm:w-full">
           <div className="mb-2 flex justify-center">
           </div>
-          <h2 className="text-center text-2xl font-bold leading-tight text-red-700">
+          <h2 className="text-center text-xl sm:text-2xl font-bold leading-tight text-red-700">
             {text2}
           </h2>
-          <div className="flex ml-4 sm:ml-16 ">
-            <p className="mt-3  sm:ml text-center text-sm text-red-600 ">{text3} </p>
+          <div className="flex ml-2 sm:ml-28 w-80 sm:w-full ">
+            <p className="mt-3  sm:ml text-center text-sm text-red-600 ">{text3}</p>
 
             <button onClick={handleFormbtn} className=" mt-2.5 ml-4">
               
@@ -106,15 +106,15 @@ export function SignInThree() {
                 </p> 
             </button>
           </div>
-          <form action="#" method="POST" className="mt-8">
-            <div className="space-y-5">
+          <form action="#" method="POST" className="mt-1 sm:mt-5">
+            <div className="space-y-1">
               {isSignIn ? (
                 ""
               ) : (
                 <div>
                   <label
                     htmlFor=""
-                    className="text-base font-medium text-white"
+                    className="text-base font-normal sm:font-medium text-white"
                   >
                     {" "}
                     Name{" "}
@@ -122,7 +122,7 @@ export function SignInThree() {
                   <div className="mt-2">
                     <input
                       ref={name}
-                      className="flex h-10 w-full sm:w-full sm:h-10 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
+                      className="flex h-9 w-full sm:w-full sm:h-9 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
                       type="text"
                       placeholder="Enter Your Name"
                     ></input>
@@ -138,7 +138,7 @@ export function SignInThree() {
                 <div className="mt-2">
                   <input
                     ref={email}
-                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
+                    className="flex h-9 w-full sm:w-full sm:h-9 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
                     type="email"
                     placeholder="Email"
                   ></input>
@@ -165,7 +165,7 @@ export function SignInThree() {
                 <div className="mt-2">
                   <input
                     ref={password}
-                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
+                    className="flex h-9 w-full sm:w-full sm:h-9 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
                     type="password"
                     placeholder="Password"
                   ></input>
@@ -175,7 +175,7 @@ export function SignInThree() {
                 {password ? errorMessage : ""}
               </p>
 
-              <div>
+              <div className="">
                 <button
                   onClick={HandleSubmitBtn}
                   type="button"
@@ -186,7 +186,7 @@ export function SignInThree() {
               </div>
             </div>
           </form>
-          <div className="mt-3 space-y-3">
+          <div className="mt-2 space-y-2">
             <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
@@ -203,6 +203,9 @@ export function SignInThree() {
               </span>
               Sign in with Google
             </button>
+            {
+              !isSignIn?"":(
+            
             <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
@@ -219,6 +222,8 @@ export function SignInThree() {
               </span>
               Sign in with Facebook
             </button>
+            )
+              }
           </div>
         </div>
       </div>
