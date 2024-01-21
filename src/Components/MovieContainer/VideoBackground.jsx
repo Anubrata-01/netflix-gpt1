@@ -3,10 +3,13 @@ import ReactPlayer from "react-player";
 import { VolumeUpIcon } from "evergreen-ui";
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import { Api_options } from "../constant";
+import { useDispatch } from "react-redux";
+import { addPlayerTrailer } from "../../Redux Store/movieSlice";
 
 const VideoBackground = ({ videoId }) => {
   const [trailerKey, setTrailerKey] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
+  const dispatch=useDispatch()
   const movieVideo = async () => {
     try {
       const data = await fetch(
@@ -22,6 +25,7 @@ const VideoBackground = ({ videoId }) => {
       if (filteredTrailer && filteredTrailer.length > 0) {
         const key = filteredTrailer[0]?.key;
         setTrailerKey(key);
+        dispatch(addPlayerTrailer(key))
       } else {
         console.warn("No trailer found for the specified movie.");
       }
@@ -41,7 +45,7 @@ const VideoBackground = ({ videoId }) => {
   if (!trailerKey) {
     return null; // or render a loading spinner/message
   }
-
+ 
   return (
     <div className=" h-[400px] relative sm:h-screen -mt-20 sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
       <ReactPlayer
@@ -65,6 +69,8 @@ const VideoBackground = ({ videoId }) => {
           },
         }}
       />
+      {/* <video src={`https://res.cloudinary.com/ehizeex-shop/video/upload/${trailerKey}/NetflixApp/Action_mlw9wx.mp4`} className="w-full h-full" autoPlay loop controls/> */}
+      {/* <video src=`https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4`/> */}
       <button
         onClick={handleToggleMute}
         className="text-white"
@@ -86,3 +92,8 @@ const VideoBackground = ({ videoId }) => {
 };
 
 export default memo(VideoBackground);
+
+
+
+
+// blob:https://www.netflix.com/c65ef093-cb99-47bf-8d8b-845885552bfb
