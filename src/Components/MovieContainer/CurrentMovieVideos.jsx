@@ -14,7 +14,7 @@ const CurrentMovieVideos = () => {
 
   return (
     <div className='ml-52 pb-3 mt-1
-    grid grid-cols-3 gap-2'>
+    flex flex-col sm:grid sm:grid-cols-3 sm:gap-2'>
       {data1?.map((trailer)=>(
         <TrailerComponent trailerkey={trailer.key}/>
       ))}

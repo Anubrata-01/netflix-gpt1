@@ -9,7 +9,7 @@ const MainmovieDetails = ({ user }) => {;
   return (
     <div className="pt-40 pl-12 absolute sm:pt-52 sm:pl-16 mt-5 z-10 bg-gradient-to-r from-black to-transparent">
       {user1?.visible && (
-        <div className="text-white text-xl sm:text-3xl flex relative -top-24 sm:-top-28">
+        <div className="text-white text-xl sm:text-3xl flex relative sm:fixed -top-24 sm:top-16">
           <h1>Movies</h1>
           <div className="ml-6">
             <CustomPlaceholderAndIconSelectMenuExample />

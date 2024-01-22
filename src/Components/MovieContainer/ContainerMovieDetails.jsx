@@ -59,12 +59,12 @@ console.log(data)
 
 
   return (
-    <div className="w-full h-full bg-slate-800 relative overflow-x-scroll no-scrollbar ">
+    <div className="w-full h-full bg-slate-800 relative overflow-x-scroll no-scrollbar sm:overflow-scroll sm:no-scrollbar">
       <div className="">
-            <button onClick={()=>navigate("/browse")} className="absolute left-14 top-8"><FaArrowLeft size={25}/></button>
+            <button onClick={()=>navigate(-1)} className="absolute left-14 top-8"><FaArrowLeft size={25}/></button>
 
       </div>
-      <div className="flex ml-52">
+      <div className="flex flex-col sm:flex sm:flex-row sm:ml-52">
         <div className="mt-5">
           <img
             className="rounded-lg w-full h-full"
@@ -125,16 +125,21 @@ console.log(data)
           </div>
         </div>
       </div>
-      <div>
+      <div className="-ml-48 sm:ml-0">
       <p className='ml-52 mt-2 text-lg text-teal-500 font-bold'>Cast:</p>
-      </div>
       <CastSection userId={userId}/> 
-      <div>
+      </div>
+      {/* <CastSection userId={userId}/>  */}
+      <div className="-ml-48 sm:ml-0">
         <p className="ml-52 text-lg text-teal-500 font-bold">More Videos</p>
+        <div>
       <CurrentMovieVideos/>
 
+        </div>
+      {/* <CurrentMovieVideos/> */}
+
       </div>
-      <div>
+      <div className="-ml-48 sm:ml-0">
         <p className="ml-52 mt-3 text-teal-500 font-bold">Similar Videos:</p>
         <div className="w-full bg-inherit overflow-x-scroll no-scrollbar">
         <SimilarMovieSection similar={userId}/>

@@ -47,7 +47,7 @@ const VideoBackground = ({ videoId }) => {
   }
  
   return (
-    <div className=" h-[400px] relative sm:h-screen -mt-20 sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
+    <div className=" h-[400px] relative sm:h-screen -mt-28 sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${trailerKey}`}
         width="100%"
@@ -73,10 +73,10 @@ const VideoBackground = ({ videoId }) => {
       {/* <video src=`https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4`/> */}
       <button
         onClick={handleToggleMute}
-        className="text-white"
+        className="text-white font-normal sm:font-medium mt-40 pt-2 sm:pt-0 sm:mt-0"
         style={{
           position: "absolute",
-          top: "70%",
+          top: "24%",
           right: "80px",
           zIndex: 10,
         }}

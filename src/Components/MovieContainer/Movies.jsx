@@ -17,7 +17,7 @@ const Movies = () => {
   );
   const movies1 = useSelector((store) => store.movie.popular.popularMovies);
   const movies2 = useSelector((store) => store.movie.topRated.topMovies);
-  const selectedMovie = movie?.results[2];
+  const selectedMovie = movie?.results[3];
   let path = "movies";
   return (
     <div>
