@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import useCurrentMovieDetails from '../../CustomHooks/useCurrentMovieDetails'
 import { useSelector } from 'react-redux';
 import TrailerComponent from './TrailerComponent';
@@ -6,19 +6,16 @@ import useSimilarVideos from '../../CustomHooks/useSimilarVideos';
 const CurrentMovieVideos = () => {
   useCurrentMovieDetails();
   useSimilarVideos()
-  const data1=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer)
-  const dat1=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieDetails)
-  console.log(data1)
-  console.log(dat1)
-
-
+  const trailer=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer)
+  const trailers = useMemo(() => {
+    return trailer?.map((trailer) => (
+       <TrailerComponent key={trailer.key} trailerkey={trailer?.key} />
+    ));
+ }, [trailer]);
   return (
     <div className='ml-52 pb-3 mt-1
-    flex flex-col sm:grid sm:grid-cols-3 sm:gap-2'>
-      {data1?.map((trailer)=>(
-        <TrailerComponent trailerkey={trailer.key}/>
-      ))}
-      {/* <h1>hello</h1> */}
+    grid grid-cols-1 gap-2 sm:grid sm:grid-cols-3 sm:gap-2'>
+      {trailers}
     </div>
   )
 }
