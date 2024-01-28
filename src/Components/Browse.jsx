@@ -6,6 +6,7 @@ import SecondaryContainer from "./MovieContainer/SecondaryContainer";
 import { useSelector } from "react-redux";
 import { Api_options } from "./constant";
 import { Context } from "./context";
+import GptSearchPage from "./GPTSearch/GptSearchPage";
 const Browse = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   useMoviefetch(2);
@@ -14,6 +15,8 @@ const Browse = () => {
   );
   const movies1 = useSelector((store) => store.movie.popular.popularMovies);
   const movies2 = useSelector((store) => store.movie.topRated.topMovies);
+  const isShow=useSelector((store)=>store?.gptSlice?.gptShow);
+  console.log(isShow)
   useEffect(() => {
     if (!movies) return; // Don't proceed if movies is not available
 
@@ -48,8 +51,12 @@ const Browse = () => {
     <div className="relative h-screen bg-black">
       <Context.Provider value={{ selectedMovie, movies, movies1, movies2 }}>
         <Header />
-        <MainContainer />
+        {
+          isShow?(<GptSearchPage/>):(<>
+           <MainContainer />
         <SecondaryContainer />
+          </>)
+        }
       </Context.Provider>
     </div>
   );
