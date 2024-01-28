@@ -41,8 +41,8 @@ const Body = () => {
             element:<ActorProfile/>
         },
         {
-            path:"/movie/similar/:userId",
-            element:<SimilarContainer/>
+            path:"/browse/movie/:userId",
+            element:<ContainerMovieDetails/>
         },
         {
             path:"/browse/movies",
