@@ -3,9 +3,11 @@ import useCurrentMovieDetails from '../../CustomHooks/useCurrentMovieDetails'
 import { useSelector } from 'react-redux';
 import TrailerComponent from './TrailerComponent';
 import useSimilarVideos from '../../CustomHooks/useSimilarVideos';
-const CurrentMovieVideos = () => {
+import useMoviecredits from '../../CustomHooks/useMoviecredits';
+const CurrentMovieVideos = ({userId}) => {
   useCurrentMovieDetails();
-  useSimilarVideos()
+  useSimilarVideos(userId);
+  useMoviecredits(userId)
   const trailer=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer)
   const trailers = useMemo(() => {
     return trailer?.map((trailer) => (

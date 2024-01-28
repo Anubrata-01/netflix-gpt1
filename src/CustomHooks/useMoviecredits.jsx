@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import {addCurrentMovieCredits,addCurrentMovieCast } from '../Redux Store/movieSlice';
 
-const useMoviecredits = () => {
-     const { userId } = useParams();
+const useMoviecredits = (userId) => {
+    //  const { userId } = useParams();
     const dispatch=useDispatch()
     const credits=useSelector((store)=>store?.movie?.movieCredits)
     // const cast=useSelector((store)=>store?.movie?.movieCredits?.cast)
@@ -17,7 +17,7 @@ const useMoviecredits = () => {
         const data = await fetch(url, Api_options);
         const json = await data.json();
         console.log(json)
-        const cast=json.cast.filter((item)=>item.name)
+        const cast=json?.cast?.filter((item)=>item.name)
         dispatch(addCurrentMovieCast(cast))
         dispatch(addCurrentMovieCredits(json))
         ;

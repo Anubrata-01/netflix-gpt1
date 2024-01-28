@@ -17,8 +17,9 @@ const ContainerMovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [isshow, setIsshow] = useState(false);
   const { userId } = useParams();
+  console.log(userId)
   const Url = "https://image.tmdb.org/t/p/w200";
-  useMoviecredits();
+  // useMoviecredits(userId);
   useFetchMovieById(userId, setMovieDetails);
   const cast = useSelector((store) => store?.movie?.movieCredits?.cast);
   const directors = useMemo(() => {
@@ -124,7 +125,7 @@ const ContainerMovieDetails = () => {
       <div className="-ml-48 sm:ml-0">
         <p className="ml-52 text-lg text-teal-500 font-bold">More Videos</p>
         <div>
-          <CurrentMovieVideos />
+          <CurrentMovieVideos userId={userId} />
         </div>
         {/* <CurrentMovieVideos/> */}
       </div>

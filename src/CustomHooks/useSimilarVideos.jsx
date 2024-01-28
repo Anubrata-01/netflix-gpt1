@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useDispatch} from 'react-redux'
 import { addSimilarMovies } from '../Redux Store/movieSlice'
 import { Api_options } from '../Components/constant'
 const useSimilarVideos = (userId) => {
-   //  const {userId}=useParams()
     const dispatch=useDispatch()
  const similar_Url="https://api.themoviedb.org/3/movie/"+ userId +"/similar"
  const fetchBysimilarvideo=async(url)=>{
