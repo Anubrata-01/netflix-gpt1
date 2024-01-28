@@ -8,11 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUserDetails, removeUserDetails } from "../Redux Store/CreateSlice";
 import { useEffect } from "react";
 import { Button } from "evergreen-ui";
+import { chooseYourLang, gptToogleShow } from "../Redux Store/gptSlice";
+import { SupportLang } from "../Utilities/languageConstant";
+// export SupportLang
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const data = useSelector((store) => store.app);
   const [sign, setSign] = useState(true);
+  const [isShow, setIsShow] = useState(false);
+
   const dispatch = useDispatch();
   const handleSignout = () => {
     signOut(auth)
@@ -22,6 +27,12 @@ const Header = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+  const handleGPTSearch = () => {
+    console.log("i am GPT");
+    // setSign(!sign)
+    setIsShow(!isShow);
+    dispatch(gptToogleShow());
   };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -38,17 +49,20 @@ const Header = () => {
       }
     });
   }, []);
-  window.onscroll=()=>{
-    setIsScrolled(window.scrollY === 0 ? false : true)
-    return ()=>(window.onscroll = null)
-  }
+  window.onscroll = () => {
+    setIsScrolled(window.scrollY === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
   const headerStyle = {
     background: isScrolled ? "#000" : "transparent", // Change background color based on scroll
     transition: "background 0.3s ease", // Add a smooth transition effect
   };
-  console.log(isScrolled)
+  console.log(isScrolled);
   return (
-    <div className=" sticky top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full z-20" style={headerStyle}>
+    <div
+      className=" sticky top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full z-20"
+      style={headerStyle}
+    >
       <div className="   sm:w-full flex justify-between bg-gradient-to-r from-transparent ">
         <div className="ml-3 mt-3 flex sm-ml-6">
           <img
@@ -56,37 +70,73 @@ const Header = () => {
             src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
             alt="Netflis Img"
           />
-          <div>
-            {!sign ? (
-              <ul className=" list-none text-2xl cursor-pointer  w-full h-1/3 sm:h-full sm:w-full overflow-y-scroll no-scrollbar flex flex-col sm:flex sm:flex-row justify-between text-white mt-1 ml-1 sm:mt-2.5 md:ml-4 sm:ml-3 sm:text-sm">
-                <NavLink to={"/browse"}>Home</NavLink>
-                <NavLink to={"/browse/movies"}>Movies</NavLink>
-                <NavLink to={"/list"}>My List</NavLink>
-              </ul>
-            ) : (
-              ""
-            )}
-          </div>
+          {!sign && (
+            <div>
+              {isShow ? (
+                ""
+              ) : (
+                <ul className=" list-none text-2xl cursor-pointer  w-full h-1/3 sm:h-full sm:w-full overflow-y-scroll no-scrollbar flex flex-col sm:flex sm:flex-row justify-between text-white mt-1 ml-1 sm:mt-2.5 md:ml-4 sm:ml-3 sm:text-sm">
+                  <NavLink to={"/browse"}>Home</NavLink>
+                  <NavLink to={"/browse/movies"}>Movies</NavLink>
+                  <NavLink to={"/list"}>My List</NavLink>
+                </ul>
+              )}
+            </div>
+          )}
         </div>
+        {/*  */}
         <div className=" mt-4 mr-0 sm:mr-10">
           <ul>
             <li>
-              <NavLink to={"/home/login"}>
-                {sign ? (
-                  <Button marginRight={16} appearance="primary" intent="danger">
-                    SignIn
-                  </Button>
+              <div className="flex">
+                {!sign ? (
+                  <div className="flex">
+                    {isShow && (
+                      <div>
+                        <label className=" border-none p-4 rounded-md">
+                          <select name="selectedLang" className="p-1" onClick={(e)=>dispatch(chooseYourLang(e.target.value))}>
+                            {SupportLang.map((lan) => (
+                              <option value={lan.identifier} >{lan.name}</option>
+                            ))}
+                          </select>
+                        </label>
+                      </div>
+                    )}
+                    <Button
+                      marginRight={16}
+                      onClick={handleGPTSearch}
+                      appearance="primary"
+                      intent=""
+                      className=" bg-orange-500"
+                    >
+                      {!isShow?"GPTSearch":"HomePage"}
+                    </Button>
+                  </div>
                 ) : (
-                  <Button
-                    marginRight={16}
-                    onClick={handleSignout}
-                    appearance="primary"
-                    intent="danger"
-                  >
-                    SignOut
-                  </Button>
+                  " "
                 )}
-              </NavLink>
+
+                <NavLink to={"/home/login"}>
+                  {sign ? (
+                    <Button
+                      marginRight={16}
+                      appearance="primary"
+                      intent="danger"
+                    >
+                      SignIn
+                    </Button>
+                  ) : (
+                    <Button
+                      marginRight={16}
+                      onClick={handleSignout}
+                      appearance="primary"
+                      intent="danger"
+                    >
+                      SignOut
+                    </Button>
+                  )}
+                </NavLink>
+              </div>
             </li>
             <li>
               {!sign ? <h4 className="text-white">{data.displayName}</h4> : ""}
