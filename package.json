@@ -16,6 +16,7 @@
     "firebase": "^10.7.1",
     "har-validator": "^5.1.5",
     "lucide-react": "^0.294.0",
+    "openai": "^4.26.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
