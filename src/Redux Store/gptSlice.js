@@ -3,7 +3,8 @@ const gptSlice=createSlice({
     name:"gpt",
     initialState:{
         gptShow:false,
-        supportedLan:"en"
+        supportedLan:"en",
+        gptSearchMovies:null
         
     },
     reducers:{
@@ -12,8 +13,15 @@ const gptSlice=createSlice({
         },
         chooseYourLang:(state,action)=>{
             state.supportedLan=action.payload;
+        },
+        storeGptSearchMovie:(state,action)=>{
+            if(state.gptSearchMovies !==null){
+                state.gptSearchMovies=action.payload
+            }
+            state.gptSearchMovies=action.payload
+
         }
     }
 })
-export const { gptToogleShow,chooseYourLang }= gptSlice.actions;
+export const { gptToogleShow,chooseYourLang,storeGptSearchMovie }= gptSlice.actions;
 export default gptSlice.reducer;
