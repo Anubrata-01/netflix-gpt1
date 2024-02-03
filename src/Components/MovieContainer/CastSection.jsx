@@ -5,7 +5,10 @@ import Castcard from './Castcard'
 import useMoviecredits from '../../CustomHooks/useMoviecredits'
 
 const CastSection = ({userId}) => {
- useMoviecredits(userId)
+  const movieCreditsUrl = useMemo(() => {
+    return "https://api.themoviedb.org/3/movie/"+userId +"/credits";
+ }, [userId]);
+ useMoviecredits(movieCreditsUrl)
  const casts=useSelector((store)=>store?.movie?.movieCredits?.cast)
  console.log(casts)
  const filterdcast = useMemo(() => casts?.filter((item)=>item.profile_path), [casts])
