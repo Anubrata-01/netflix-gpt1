@@ -1,4 +1,4 @@
-import  { useCallback, useEffect } from 'react'
+import  { useEffect } from 'react'
 import { Api_options } from '../Components/constant';
 import { addSimilarMovies } from '../Redux Store/movieSlice';
 
