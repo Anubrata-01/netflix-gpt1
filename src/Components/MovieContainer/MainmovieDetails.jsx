@@ -16,7 +16,7 @@ const MainmovieDetails = ({ user }) => {;
           </div>
         </div>
       )}
-      <div className="text-red-600 text-2xl sm:text-6xl font-bold">
+      <div className="text-red-600 text-2xl sm:text-4xl font-bold">
         {user1?.selectedMovie?.title}
       </div>
       <div className="hidden md:block text-white pt-4 w-2/4">
