@@ -7,15 +7,17 @@ const MovieSection = ({ movies, title }) => {
       <div className="w-full pl-5 pb-3  overflow-x-scroll no-scrollbar">
         <div className=" pt-2">
           <div className="flex relative space-x-2 ">
-            {movies?.results?.map((item, index) => (
-              <>
+          {movies?.results
+              ? movies.results.map((item, index) => (
                   <div key={item?.id}>
-                    <MovidCard
-                      moviedetails={item}
-                    />
+                    <MovidCard moviedetails={item} />
                   </div>
-              </>
-            ))}
+                ))
+              : movies?.map((item, index) => (
+                  <div key={item?.id}>
+                    <MovidCard moviedetails={item} />
+                  </div>
+                ))}
           </div>
         </div>
       </div>
