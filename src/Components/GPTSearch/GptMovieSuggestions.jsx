@@ -1,26 +1,25 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Url } from '../constant';
+import MovieSection from '../MovieContainer/MovieSection';
 
 const GptMovieSuggestions = () => {
-  const gptSearchresults=useSelector((store)=>store?.gptSlice?.gptSearchMovies);
-  console.log(gptSearchresults)
+  const {movieNames,movieResults}=useSelector((store)=>store?.gptSlice);
+
+ 
   return (
-    <div className='absolute border-2 w-[80%] h-[60%] top-[35%] z-999 text-white flex justify-center left-[10%] sm:top-[30%] md:top-[34%]'>
-      {gptSearchresults?.map((subArray, i) => (
-        <div key={i}>
-          {subArray?.map((movie, j) => (
-            <div key={j}>
-              <p>{movie.adult}</p>
-              <img src={ Url+ movie.backdrop_path} alt={movie.title} />
-              {/* <p>{movie.genre_ids}</p>
-              <p>{movie.id}</p>
-              <p>{movie.original_language}</p> */}
-              {/* Add other properties as needed */}
-            </div>
-          ))}
-        </div>
-      ))}
+    <div className='absolute  w-full bg-black overflow-y-scroll no-scrollbar top-[35%]  text-white flex justify-between left-[0] sm:top-[30%] md:top-[34%]'>
+      <div className='overflow-x-scroll no-scrollbar'>
+      {movieNames && movieResults ? (
+          movieNames.map((movieName, index) => (
+            <MovieSection key={movieName} movies={movieResults[index]} title={movieName} />
+          ))
+        ) : (
+          <div className="p-1   w-full text-white flex justify-center text-2xl">
+            Enter a Search query
+          </div>
+        )}
+      </div>
+      
       </div>
   )
 }
