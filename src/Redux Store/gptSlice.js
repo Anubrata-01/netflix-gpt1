@@ -1,27 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-const gptSlice=createSlice({
-    name:"gpt",
-    initialState:{
-        gptShow:false,
-        supportedLan:"en",
-        gptSearchMovies:null
-        
+const gptSlice = createSlice({
+  name: "gpt",
+  initialState: {
+    gptShow: false,
+    supportedLan: "en",
+    movieNames: null,
+    movieResults: null,
+  },
+  reducers: {
+    gptToogleShow: (state) => {
+      state.gptShow = !state.gptShow;
     },
-    reducers:{
-        gptToogleShow:(state)=>{
-            state.gptShow=!state.gptShow;
-        },
-        chooseYourLang:(state,action)=>{
-            state.supportedLan=action.payload;
-        },
-        storeGptSearchMovie:(state,action)=>{
-            if(state.gptSearchMovies !==null){
-                state.gptSearchMovies=action.payload
-            }
-            state.gptSearchMovies=action.payload
-
-        }
-    }
-})
-export const { gptToogleShow,chooseYourLang,storeGptSearchMovie }= gptSlice.actions;
+    chooseYourLang: (state, action) => {
+      state.supportedLan = action.payload;
+    },
+    storeGptSearchMovie: (state, action) => {
+      const { movieNames, movieResults } = action.payload;
+      state.movieNames = movieNames;
+      state.movieResults = movieResults;
+    },
+  },
+});
+export const { gptToogleShow, chooseYourLang, storeGptSearchMovie } =
+  gptSlice.actions;
 export default gptSlice.reducer;
