@@ -1,30 +1,20 @@
 import  { useEffect } from 'react'
 import { Api_options } from '../Components/constant';
-import { useParams } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
-import {addCurrentMovieCredits,addCurrentMovieCast } from '../Redux Store/movieSlice';
+import { useDispatch,} from 'react-redux';
+import {addCurrentMovieCast, addCurrentMovieCredits } from '../Redux Store/movieSlice';
 
-const useMoviecredits = (userId) => {
-    //  const { userId } = useParams();
-    const dispatch=useDispatch()
-    const credits=useSelector((store)=>store?.movie?.movieCredits)
-    // const cast=useSelector((store)=>store?.movie?.movieCredits?.cast)
-    // console.log(cast)
-    console.log(credits)
-
-    const movieCredits="https://api.themoviedb.org/3/movie/"+userId +"/credits"
-    const fetchMovie = async (url) => {
-        const data = await fetch(url, Api_options);
-        const json = await data.json();
-        console.log(json)
-        const cast=json?.cast?.filter((item)=>item.name)
+const useMoviecredits = (movieCreditsUrl) => {
+    const dispatch=useDispatch();
+    useEffect(()=>{
+      const fetchMovieForMovieCredits=async()=>{
+        const movieCredits=await fetch(movieCreditsUrl,Api_options);
+        const parseMovieCredits=await movieCredits.json();
+        const cast=parseMovieCredits?.cast?.filter((item)=>item.name)
+        dispatch(addCurrentMovieCredits(parseMovieCredits))
         dispatch(addCurrentMovieCast(cast))
-        dispatch(addCurrentMovieCredits(json))
-        ;
       };
-      useEffect(()=>{
-        fetchMovie(movieCredits)
-      },[])
+      fetchMovieForMovieCredits();
+    },[movieCreditsUrl,dispatch])
 }
 
 export default useMoviecredits
