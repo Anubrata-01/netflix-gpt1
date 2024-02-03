@@ -41,10 +41,6 @@ const Body = () => {
             element:<ActorProfile/>
         },
         {
-            path:"/browse/movie/:userId",
-            element:<ContainerMovieDetails/>
-        },
-        {
             path:"/browse/movies",
             element:<Movies/>
         },
