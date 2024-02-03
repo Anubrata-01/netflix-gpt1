@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import CastSection from "./CastSection";
 import CurrentMovieVideos from "./CurrentMovieVideos";
 import { useCallback, useMemo, useState } from "react";
-import useMoviecredits from "../../CustomHooks/useMoviecredits";
 import { useDispatch, useSelector } from "react-redux";
 import PopOverComponent from "../../Utilities/PopOverComponent";
 import { FaArrowLeft } from "react-icons/fa";
@@ -19,7 +18,6 @@ const ContainerMovieDetails = () => {
   const { userId } = useParams();
   console.log(userId)
   const Url = "https://image.tmdb.org/t/p/w200";
-  // useMoviecredits(userId);
   useFetchMovieById(userId, setMovieDetails);
   const cast = useSelector((store) => store?.movie?.movieCredits?.cast);
   const directors = useMemo(() => {
@@ -35,7 +33,6 @@ const ContainerMovieDetails = () => {
   if (!movieDetails) {
     return null;
   }
-  console.log(movieDetails);
 
   const {
     poster_path,
@@ -47,7 +44,6 @@ const ContainerMovieDetails = () => {
     status,
     runtime,
     genres,
-    id
   } = movieDetails;
 
   return (
@@ -63,7 +59,7 @@ const ContainerMovieDetails = () => {
       <div className="flex flex-col sm:flex sm:flex-row sm:ml-52">
         <div className="mt-5">
           <img
-            className="rounded-lg w-full h-full"
+            className="rounded-lg w-full h-full object-fill"
             src={Url + poster_path}
             alt="img"
           />
@@ -121,13 +117,11 @@ const ContainerMovieDetails = () => {
         <p className="ml-52 mt-2 text-lg text-teal-500 font-bold">Cast:</p>
         <CastSection userId={userId} />
       </div>
-      {/* <CastSection userId={userId}/>  */}
       <div className="-ml-48 sm:ml-0">
         <p className="ml-52 text-lg text-teal-500 font-bold">More Videos</p>
         <div>
           <CurrentMovieVideos userId={userId} />
         </div>
-        {/* <CurrentMovieVideos/> */}
       </div>
       <div className="-ml-48 sm:ml-0">
         <p className="ml-52 mt-3 text-teal-500 font-bold">Similar Videos:</p>
