@@ -7,6 +7,17 @@ module.exports = {
     backgroundImage: {
       'hero-pattern': "url('/img/hero-pattern.svg')",
       'footer-texture': "url('/img/footer-texture.png')",
+    },
+    screens:{
+      "mobile":"300px",
+      "sm":"640px",
+      "md":"768px",
+      "lg":"1024px",
+      "xl":"1280px",
+      "2xl":"1536px"
+
+
+
     }
   },
   corePlugins: {
