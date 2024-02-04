@@ -2,13 +2,16 @@ import React, { useMemo } from 'react'
 import useCurrentMovieDetails from '../../CustomHooks/useCurrentMovieDetails'
 import { useSelector } from 'react-redux';
 import TrailerComponent from './TrailerComponent';
-import useSimilarVideos from '../../CustomHooks/useSimilarVideos';
-import useMoviecredits from '../../CustomHooks/useMoviecredits';
 const CurrentMovieVideos = ({userId}) => {
-  useCurrentMovieDetails();
-  useSimilarVideos(userId);
-  useMoviecredits(userId)
-  const trailer=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer)
+  const currentMovieUrl = useMemo(() => {
+    return "https://api.themoviedb.org/3/movie/" + userId + "/videos";;
+    
+ }, [userId]);
+  useCurrentMovieDetails(currentMovieUrl);
+  const trailer=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer?.results)
+  if(!trailer){
+    console.log("error")
+  }
   const trailers = useMemo(() => {
     return trailer?.map((trailer) => (
        <TrailerComponent key={trailer.key} trailerkey={trailer?.key} />
