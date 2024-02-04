@@ -60,7 +60,7 @@ const Header = () => {
   console.log(isScrolled);
   return (
     <div
-      className=" sticky top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full z-20"
+      className=" sticky top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full z-20 "
       style={headerStyle}
     >
       <div className="   sm:w-full flex justify-between bg-gradient-to-r from-transparent ">
@@ -107,7 +107,7 @@ const Header = () => {
                       onClick={handleGPTSearch}
                       appearance="primary"
                       intent=""
-                      className=" bg-orange-500"
+                      className="mobile:max-sm:text-red"
                     >
                       {!isShow?"GPTSearch":"HomePage"}
                     </Button>
@@ -139,7 +139,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              {!sign ? <h4 className="text-white">{data.displayName}</h4> : ""}
+              {!sign ? <h4 className="text-white ml-28 mobile:max-sm:ml-28">{data.displayName}</h4> : ""}
             </li>
           </ul>
         </div>
