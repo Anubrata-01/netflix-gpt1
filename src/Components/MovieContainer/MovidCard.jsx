@@ -4,7 +4,7 @@ const MovidCard = ({ moviedetails }) => {
   const Url = "https://image.tmdb.org/t/p/w500";
   return (
     <div>
-      <div className="w-[175px] h-[114px] relative">
+      <div className="w-[175px] h-[114px] relative pl-1 mb-4">
         <NavLink
           key={moviedetails?.id}
           to={"/browse/movie/" + moviedetails?.id}

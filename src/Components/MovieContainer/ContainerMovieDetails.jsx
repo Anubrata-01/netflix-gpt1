@@ -56,7 +56,7 @@ const ContainerMovieDetails = () => {
           <FaArrowLeft size={25} />
         </button>
       </div>
-      <div className="flex flex-col sm:flex sm:flex-row sm:ml-52">
+      <div className="flex flex-col sm:flex sm:flex-row sm:ml-20">
         <div className="mt-5">
           <img
             className="rounded-lg w-full h-full object-fill"
@@ -113,17 +113,17 @@ const ContainerMovieDetails = () => {
           </div>
         </div>
       </div>
-      <div className="-ml-48 sm:ml-0">
+      <div className="-ml-48 sm:-ml-32">
         <p className="ml-52 mt-2 text-lg text-teal-500 font-bold">Cast:</p>
         <CastSection userId={userId} />
       </div>
-      <div className="-ml-48 sm:ml-0">
+      <div className="-ml-48 sm:-ml-32">
         <p className="ml-52 text-lg text-teal-500 font-bold">More Videos</p>
         <div>
           <CurrentMovieVideos userId={userId} />
         </div>
       </div>
-      <div className="-ml-48 sm:ml-0">
+      <div className="-ml-48 sm:-ml-32">
         <p className="ml-52 mt-3 text-teal-500 font-bold">Similar Videos:</p>
         <div className="w-full bg-inherit overflow-x-scroll no-scrollbar">
           <SimilarMovieSection similar={userId} />
