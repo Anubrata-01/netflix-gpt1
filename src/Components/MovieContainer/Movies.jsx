@@ -19,9 +19,11 @@ const Movies = () => {
   const movies2 = useSelector((store) => store.movie.topRated.topMovies);
   const selectedMovie = movie?.results[3];
   let path = "movies";
+  let rpath = "/movies";
+
   return (
     <div>
-      <Context.Provider value={{selectedMovie,movies,movies1,movies2,visible}}>
+      <Context.Provider value={{selectedMovie,movies,movies1,movies2,visible,rpath}}>
       <HeaderFile
         path={path}
       />

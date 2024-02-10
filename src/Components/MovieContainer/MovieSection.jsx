@@ -1,6 +1,6 @@
 import React from "react";
 import MovidCard from "./MovidCard";
-const MovieSection = ({ movies, title }) => {
+const MovieSection = ({ movies, title,rpath }) => {
   return (
     <>
       <h1 className="relative z-10 text-white pl-5 mt-2 font-bold">{title}</h1>
@@ -10,12 +10,12 @@ const MovieSection = ({ movies, title }) => {
           {movies?.results
               ? movies.results.map((item, index) => (
                   <div key={item?.id}>
-                    <MovidCard moviedetails={item} />
+                    <MovidCard moviedetails={item} rpath={rpath}/>
                   </div>
                 ))
               : movies?.map((item, index) => (
                   <div key={item?.id}>
-                    <MovidCard moviedetails={item} />
+                    <MovidCard moviedetails={item} rpath={rpath}/>
                   </div>
                 ))}
           </div>

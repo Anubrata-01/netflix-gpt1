@@ -5,7 +5,7 @@ const MovieList = () => {
   const  movieList= useContext(Context);
   return (
     <>
-    <MovieSection movies={movieList?.movies} title={"Now Playing"}/>
+    <MovieSection movies={movieList?.movies} rpath={movieList?.rpath} title={"Now Playing"}/>
     <MovieSection movies={movieList?.movies1} title={"Popular"}/>
     <MovieSection movies={movieList?.movies2} title={"Top Rated"}/>
     </>

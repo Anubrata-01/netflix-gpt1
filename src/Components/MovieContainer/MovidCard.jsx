@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-const MovidCard = ({ moviedetails }) => {
+const MovidCard = ({ moviedetails,rpath }) => {
   const Url = "https://image.tmdb.org/t/p/w500";
   return (
     <div>
