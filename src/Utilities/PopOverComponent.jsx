@@ -3,12 +3,12 @@ import { Popover,Pane,Button} from 'evergreen-ui'
 import { useSelector } from 'react-redux'
 import TrailerComponent from '../Components/MovieContainer/TrailerComponent'
 const PopOverComponent = () => {
-  const data2=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer)
-    console.log(data2)
-    if(data2===null){
-        return null
-    }
-    const key=data2[0]?.key
+  const trailer=useSelector((store)=>store?.movie?.movieDetails?.cureentMovieTrailer?.results)
+  if(!trailer){
+    console.log("error")
+  }
+  const key=trailer?(trailer[0]?.key):"error"
+    // const key=trailer[1]?.key
   return (
     <div>
         <Popover
@@ -24,7 +24,7 @@ const PopOverComponent = () => {
       flexDirection="column"
     >
         <div className=''>
-        <TrailerComponent  trailerkey={key}/>
+        <TrailerComponent trailerkey={key}/>
 
         </div>
       {/* <TrailerComponent  trailerkey={key}/> */}
