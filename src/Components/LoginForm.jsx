@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
+  updateProfile,sendEmailVerification
 } from "firebase/auth";
 import { auth } from "../Utilities/Firebase";
 import { addUserDetails } from "../Redux Store/CreateSlice";
@@ -73,6 +73,13 @@ export function SignInThree() {
       } else {
         const userCredential = await signInWithEmailAndPassword(auth,email.current.value, password.current.value);
         const user = userCredential.user;
+        sendEmailVerification(user)
+  .then(() => {
+    // Email verification sent!
+    console.log("Email verification sent")
+    // ...
+  });
+
         console.log('User signed in:', user);
         // navigate("/browse")
 
