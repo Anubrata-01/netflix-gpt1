@@ -8,7 +8,6 @@ const PopOverComponent = () => {
     console.log("error")
   }
   const key=trailer?(trailer[0]?.key):"error"
-    // const key=trailer[1]?.key
   return (
     <div>
         <Popover
@@ -27,7 +26,6 @@ const PopOverComponent = () => {
         <TrailerComponent trailerkey={key}/>
 
         </div>
-      {/* <TrailerComponent  trailerkey={key}/> */}
     </Pane>
   }
 >

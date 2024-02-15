@@ -3,8 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { Validate } from "../Utilities/Validate";
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
-
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,8 +12,6 @@ import { auth } from "../Utilities/Firebase";
 import { addUserDetails } from "../Redux Store/CreateSlice";
 
 export function SignInThree() {
-
-  const navigate=useNavigate()
   const dispatch=useDispatch()
   const name=useRef(null);
   const email = useRef(null);
@@ -50,7 +46,11 @@ export function SignInThree() {
 
   const HandleSubmitBtn = async () => {
     try {
-      const msg = Validate(email.current.value, password.current.value);
+      if (!name.current || !email.current || !password.current) {
+        console.error("One of the refs is null");
+        return;
+      }
+      const msg = Validate(name.current.value,email.current.value, password.current.value);
       setErrorMessage(msg);
       if (msg) return;
   
@@ -81,7 +81,6 @@ export function SignInThree() {
   });
 
         console.log('User signed in:', user);
-        // navigate("/browse")
 
         
 
