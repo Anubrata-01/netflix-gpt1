@@ -11,7 +11,7 @@ const SimilarMovieSection = ({ similar }) => {
   useFetchSimilarMovies(similar_Url, dispatch);
   const Similar = useSelector((store) => store?.movie?.similarMovies);
   return (
-    <div className="ml-52 mt-2 flex">
+    <div className="ml-52 mt-2 flex overflow-scroll no-scrollbar">
       {Similar?.results?.map((similar) =><MovidCard moviedetails={similar}/>)}
     </div>
   );

@@ -15,8 +15,8 @@ const CastSection = ({userId}) => {
  const Url="https://image.tmdb.org/t/p/w500"
 
  return (
-    <div className=' mt-1 overflow-x-scroll no-scrollbar'>
-      <div className=' ml-52 flex'>
+    <div className=' mt-1 overflow-scroll no-scrollbar'>
+      <div className=' ml-52 flex overflow-scroll no-scrollbar'>
         {
           filterdcast?.map((actor)=>(
             <NavLink key={actor.id} to={"/movie/"+ actor.name}>
