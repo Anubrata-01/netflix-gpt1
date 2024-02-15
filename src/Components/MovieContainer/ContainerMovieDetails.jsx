@@ -1,15 +1,19 @@
+import React, { Suspense } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import CastSection from "./CastSection";
-import CurrentMovieVideos from "./CurrentMovieVideos";
 import { useCallback, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PopOverComponent from "../../Utilities/PopOverComponent";
 import { FaArrowLeft } from "react-icons/fa";
 import { MdAddBox, MdFileDownloadDone } from "react-icons/md";
 import { addToMyList } from "../../Redux Store/movieSlice";
-import DirectionSection from "./DirectionSection";
-import SimilarMovieSection from "./SimilarMovieSection";
 import useFetchMovieById from "../../CustomHooks/useFetchMovieById";
+
+// Lazily import components
+const LazyCastSection = React.lazy(() => import("./CastSection"));
+const LazyCurrentMovieVideos = React.lazy(() => import("./CurrentMovieVideos"));
+const LazyDirectionSection = React.lazy(() => import("./DirectionSection"));
+const LazySimilarMovieSection = React.lazy(() => import("./SimilarMovieSection"));
+
 const ContainerMovieDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -109,24 +113,32 @@ const ContainerMovieDetails = () => {
           </div>
           <div className="flex text-sm font-semibold text-white pt-2">
             Director:
-            <DirectionSection directors={directors} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyDirectionSection directors={directors} />
+            </Suspense>
           </div>
         </div>
       </div>
       <div className="-ml-48 sm:-ml-32">
         <p className="ml-52 mt-2 text-lg text-teal-500 font-bold">Cast:</p>
-        <CastSection userId={userId} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyCastSection userId={userId} />
+        </Suspense>
       </div>
       <div className="-ml-48 sm:-ml-32">
         <p className="ml-52 text-lg text-teal-500 font-bold">More Videos</p>
         <div>
-          <CurrentMovieVideos userId={userId} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyCurrentMovieVideos userId={userId} />
+          </Suspense>
         </div>
       </div>
       <div className="-ml-48 sm:-ml-32">
         <p className="ml-52 mt-3 text-teal-500 font-bold">Similar Videos:</p>
         <div className="w-full bg-inherit overflow-x-scroll no-scrollbar">
-          <SimilarMovieSection similar={userId} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazySimilarMovieSection similar={userId} />
+          </Suspense>
         </div>
       </div>
     </div>
@@ -134,3 +146,4 @@ const ContainerMovieDetails = () => {
 };
 
 export default ContainerMovieDetails;
+
