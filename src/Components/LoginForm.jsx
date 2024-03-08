@@ -46,11 +46,11 @@ export function SignInThree() {
 
   const HandleSubmitBtn = async () => {
     try {
-      if (!name.current || !email.current || !password.current) {
+      if ( !email.current || !password.current) {
         console.error("One of the refs is null");
         return;
       }
-      const msg = Validate(name.current.value,email.current.value, password.current.value);
+      const msg = Validate(email.current.value, password.current.value);
       setErrorMessage(msg);
       if (msg) return;
   

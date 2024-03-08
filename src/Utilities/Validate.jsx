@@ -1,11 +1,11 @@
 
-export const Validate = (name,email,password) => {
+export const Validate = (email,password) => {
     // const isName = /(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/.test(name);
-    if (!name) {
-        return "Required Name!"
-      } else if (!/(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/.test(name)) {
-        return 'Invalid Name ';
-      }
+    // if (!name) {
+    //     return "Required Name!"
+    //   } else if (!/(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/.test(name)) {
+    //     return 'Invalid Name ';
+    //   }
       if (!email) {
         return "Required email!"
       } else if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
