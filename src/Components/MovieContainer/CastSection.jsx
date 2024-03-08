@@ -10,7 +10,12 @@ const CastSection = ({userId}) => {
  }, [userId]);
  useMoviecredits(movieCreditsUrl)
  const casts=useSelector((store)=>store?.movie?.movieCredits?.cast)
+ if(casts){
+  // return "Loading.."
  console.log(casts)
+
+ }
+//  console.log(casts)
  const filterdcast = useMemo(() => casts?.filter((item)=>item.profile_path), [casts])
  const Url="https://image.tmdb.org/t/p/w500"
 

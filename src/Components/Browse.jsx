@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Header from "./Header";
 import useMoviefetch from "../CustomHooks/useMoviefetch";
-import MainContainer from "./MovieContainer/MainContainer";
-import SecondaryContainer from "./MovieContainer/SecondaryContainer";
+// import MainContainer from "./MovieContainer/MainContainer";
+// const LazyMainContainer=React.lazy(()=>import("./MovieContainer/MainContainer"))
+// import SecondaryContainer from "./MovieContainer/SecondaryContainer";
 import { useSelector } from "react-redux";
 import { Api_options } from "./constant";
 import { Context } from "./context";
 import GptSearchPage from "./GPTSearch/GptSearchPage";
+const LazyMainContainer=React.lazy(()=>import("./MovieContainer/MainContainer"))
+const LazySecondaryContainer=React.lazy(()=>import("./MovieContainer/SecondaryContainer"))
+
+
 const Browse = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   useMoviefetch(2);
@@ -53,8 +58,11 @@ const Browse = () => {
         <Header />
         {
           isShow?(<GptSearchPage/>):(<>
-           <MainContainer />
-        <SecondaryContainer />
+          <Suspense fallback={"Loading.."}>
+           <LazyMainContainer />
+        <LazySecondaryContainer />
+           
+        </Suspense>
           </>)
         }
       </Context.Provider>
