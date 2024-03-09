@@ -47,7 +47,7 @@ const VideoBackground = ({ videoId }) => {
   }
  
   return (
-    <div className=" h-[400px] relative sm:h-screen -mt-28 sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
+    <div className=" h-[350px] relative sm:h-screen -mt-48  sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${trailerKey}`}
         width="100%"

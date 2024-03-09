@@ -1,8 +1,10 @@
 import React from 'react'
 import GptSearchBar from './GptSearchBar'
 import GptMovieSuggestions from './GptMovieSuggestions'
+import runChat from '../../Utilities/openai'
 
 const GptSearchPage = () => {
+  // runChat("what is react")
   return (
     <div className=''>
          <div className=''>
@@ -10,6 +12,7 @@ const GptSearchPage = () => {
           <div className=" bg-black/90 fixed top-0 left-0 w-full "/>
         </div>
         <GptSearchBar/>
+
         <GptMovieSuggestions/>
     </div>
   )

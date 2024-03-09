@@ -6,5 +6,6 @@ export const Api_options = {
     }
   };
 
-export const OpenAI_Key="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";
+// export const OpenAI_Key="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";s
+export const Gemini_Api_Key="AIzaSyBu_Hr4TX57tGmY6zIcvZNF77aIIl1BFG4";
 export const Url="https://image.tmdb.org/t/p/w500";
