@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Context } from '../context';
-import HeaderFile from '../HeaderFile';
+import MoviesSectionWraper from '../MoviesSectionWraper';
 const GenreSection = () => {
   const[visible,setVisible]=useState(true)
 
@@ -17,9 +17,9 @@ const GenreSection = () => {
   return (
     <div>
       <Context.Provider value={{selectedMovie,movies,movies1,movies2,visible}}>
-      <HeaderFile
-        path={path}
-      />
+      
+      <MoviesSectionWraper path={path}/>
+       
       </Context.Provider>
     </div>
   )

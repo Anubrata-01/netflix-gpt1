@@ -4,7 +4,7 @@ const LazyLoadedMovidCard = React.lazy(() => import("./MovidCard"));
 
 const MovieSection = ({ movies, title, rpath }) => {
   return (
-    <>
+    <div className="w-full bg-black relative">
       <h1 className="relative z-10 text-white pl-5 -mt-2 font-bold">{title}</h1>
       <div className="w-full pl-5 pb-3  overflow-x-scroll no-scrollbar">
         <div className=" pt-2">
@@ -29,7 +29,7 @@ const MovieSection = ({ movies, title, rpath }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

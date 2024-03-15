@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import HeaderFile from "../HeaderFile";
 import useFetchMovieForMovies from "../../CustomHooks/useFetchMovieForMovies";
 import { useSelector } from "react-redux";
 import useMoviefetch from "../../CustomHooks/useMoviefetch";
 import { Context } from "../context";
+import MoviesSectionWraper from "../MoviesSectionWraper";
 
 const Movies = () => {
   const[visible,setVisible]=useState(true)
@@ -24,9 +24,7 @@ const Movies = () => {
   return (
     <div>
       <Context.Provider value={{selectedMovie,movies,movies1,movies2,visible,rpath}}>
-      <HeaderFile
-        path={path}
-      />
+      <MoviesSectionWraper path={path}/>
       </Context.Provider>
 
     </div>

@@ -6,7 +6,7 @@ import useAuthentic from "../CustomHooks/useAuthentic";
 import { useSelector } from "react-redux";
 import GptSearchPage from "./GPTSearch/GptSearchPage";
 
-const HeaderFile = ({
+const MoviesSectionWraper = ({
   path,
 }) => {
   useAuthentic(path);
@@ -26,4 +26,4 @@ const HeaderFile = ({
   );
 };
 
-export default HeaderFile;
+export default MoviesSectionWraper;
