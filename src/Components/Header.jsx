@@ -75,7 +75,7 @@ const Header = () => {
               {isShow ? (
                 ""
               ) : (
-                <ul className=" list-none text-2xl cursor-pointer  w-full h-1/3 sm:h-full sm:w-full overflow-y-scroll no-scrollbar flex flex-col sm:flex sm:flex-row justify-between text-white mt-1 ml-1 sm:mt-2.5 md:ml-4 sm:ml-3 sm:text-sm">
+                <ul className=" list-none text-xl cursor-pointer  w-full h-1/3 sm:h-full  sm:w-full overflow-y-scroll no-scrollbar flex flex-col sm:flex sm:flex-row justify-between text-white mt-1 ml-1 sm:mt-2.5 md:ml-4 sm:ml-3 sm:text-sm">
                   <NavLink to={"/browse"}>Home</NavLink>
                   <NavLink to={"/browse/movies"}>Movies</NavLink>
                   <NavLink to={"/list"}>My List</NavLink>
@@ -93,8 +93,8 @@ const Header = () => {
                   <div className="flex">
                     {isShow && (
                       <div>
-                        <label className=" border-none p-4 rounded-md">
-                          <select name="selectedLang" className="p-1" onClick={(e)=>dispatch(chooseYourLang(e.target.value))}>
+                        <label className=" border-none p-4 rounded-md w-12 text-xs sm:text-base sm:w-full">
+                          <select name="selectedLang" className="p-1 " onClick={(e)=>dispatch(chooseYourLang(e.target.value))}>
                             {SupportLang.map((lan) => (
                               <option value={lan.identifier} >{lan.name}</option>
                             ))}
@@ -107,7 +107,7 @@ const Header = () => {
                       onClick={handleGPTSearch}
                       appearance="primary"
                       intent=""
-                      className="mobile:max-sm:text-red"
+                      className="mobile:max-sm:text-red w-16 text-xs sm:text-base sm:w-full"
                     >
                       {!isShow?"GPTSearch":"HomePage"}
                     </Button>
@@ -122,6 +122,7 @@ const Header = () => {
                       marginRight={16}
                       appearance="primary"
                       intent="danger"
+                      c
                     >
                       SignIn
                     </Button>
@@ -131,6 +132,7 @@ const Header = () => {
                       onClick={handleSignout}
                       appearance="primary"
                       intent="danger"
+                      className=" w-12 text-xs sm:text-base sm:w-full"
                     >
                       SignOut
                     </Button>

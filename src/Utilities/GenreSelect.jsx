@@ -42,7 +42,7 @@ const CustomPlaceholderAndIconSelectMenuExample = () => {
   // useFetchMovieByGenreId(selectedId)
 
   return (
-    <Pane>
+    <Pane className="w-16 text-xs sm:text-base sm:w-full">
       <SelectMenu
         title="Select Option"
         options={genres?.genres?.map((label) => ({
