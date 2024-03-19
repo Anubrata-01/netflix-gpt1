@@ -1,11 +1,13 @@
 import React from "react";
-import { Button, PlayIcon,} from "evergreen-ui";
+import { Button, PlayIcon } from "evergreen-ui";
 import MoreInfoPopComponent from "../../Utilities/MoreInfoPopComponent";
 import CustomPlaceholderAndIconSelectMenuExample from "../../Utilities/GenreSelect";
 import { useNavigate } from "react-router-dom";
-const MainmovieDetails = ({ user }) => {;
-  const navigate=useNavigate();
+
+const MainmovieDetails = ({ user, }) => {
+  const navigate = useNavigate();
   const user1 = user;
+
   return (
     <div className="pt-40 pl-6 absolute sm:pt-52 sm:pl-16 mt-2 z-10 bg-gradient-to-r from-black to-transparent">
       {user1?.visible && (
@@ -22,14 +24,24 @@ const MainmovieDetails = ({ user }) => {;
       <div className="hidden sm:block text-white pt-4 w-2/4">
         {user1?.selectedMovie?.overview}
       </div>
-      <div className="pt-4 flex">
-        <Button marginY={7} className="" marginRight={12} iconBefore={PlayIcon} onClick={()=>navigate("/player")}>
-          Play
-        </Button>
-        <MoreInfoPopComponent/>
+      <div className="pt-4 flex justify-between ">
+       
+          <Button
+            marginY={7}
+            className=""
+            marginRight={12}
+            iconBefore={PlayIcon}
+            onClick={() => navigate("/player")}
+          >
+            Play
+          </Button>
+          <MoreInfoPopComponent />
+        
+      
       </div>
     </div>
   );
 };
 
 export default MainmovieDetails;
+

@@ -6,7 +6,7 @@ import { Api_options } from "../constant";
 import { useDispatch } from "react-redux";
 import { addPlayerTrailer } from "../../Redux Store/movieSlice";
 
-const VideoBackground = ({ videoId }) => {
+const VideoBackground = ({ videoId}) => {
   const [trailerKey, setTrailerKey] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
   const dispatch=useDispatch()
@@ -69,8 +69,7 @@ const VideoBackground = ({ videoId }) => {
           },
         }}
       />
-      {/* <video src={`https://res.cloudinary.com/ehizeex-shop/video/upload/${trailerKey}/NetflixApp/Action_mlw9wx.mp4`} className="w-full h-full" autoPlay loop controls/> */}
-      {/* <video src=`https://res.cloudinary.com/ehizeex-shop/video/upload/v1668377666/NetflixApp/Action_mlw9wx.mp4`/> */}
+     
       <button
         onClick={handleToggleMute}
         className="text-white font-normal sm:font-medium mt-40 pt-2 sm:pt-0 sm:mt-0"
