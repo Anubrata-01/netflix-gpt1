@@ -1,7 +1,7 @@
 import React from "react";
 import MovieList from "./MovieList";
 
-const SecondaryContainer = ({ movies, movies1, movies2 }) => {
+const SecondaryContainer = () => {
   return (
     <div className="">
       <MovieList  />
