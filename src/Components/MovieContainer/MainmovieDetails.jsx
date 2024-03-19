@@ -24,7 +24,7 @@ const MainmovieDetails = ({ user, }) => {
       <div className="hidden sm:block text-white pt-4 w-2/4">
         {user1?.selectedMovie?.overview}
       </div>
-      <div className="pt-4 flex justify-between ">
+      <div className="pt-4 flex">
        
           <Button
             marginY={7}
