@@ -18,7 +18,7 @@ const MoreInfoPopComponent = () => {
             zIndex={1000}
             className="bg-gradient-to-b from-black to-transparent"
           >
-            <p className="text-gray-700">hello</p>
+            <p className="text-gray-700">Currently this section is not avialable</p>
           </Pane>
         )}
       >

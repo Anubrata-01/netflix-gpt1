@@ -60,7 +60,7 @@ const Header = () => {
   console.log(isScrolled);
   return (
     <div
-      className=" sticky top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full z-20 "
+      className=" sticky  h-12 top-0 w-full overflow-x-hidden overflow-y-hidden no-scrollbar sm:w-full sm:h-16 z-20 "
       style={headerStyle}
     >
       <div className="   sm:w-full flex justify-between bg-gradient-to-r from-transparent ">
@@ -87,7 +87,7 @@ const Header = () => {
         {/*  */}
         <div className=" mt-4 mr-0 sm:mr-10">
           <ul>
-            <li>
+            <li className=" ml-8 sm:ml-0">
               <div className="flex">
                 {!sign ? (
                   <div className="flex">
@@ -132,7 +132,7 @@ const Header = () => {
                       onClick={handleSignout}
                       appearance="primary"
                       intent="danger"
-                      className=" w-12 text-xs sm:text-base sm:w-full"
+                      className=" w-16 text-xs p-1 sm:text-base sm:w-full sm:p-0 "
                     >
                       SignOut
                     </Button>
@@ -141,7 +141,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              {!sign ? <h4 className="text-white ml-28 mobile:max-sm:ml-28">{data.displayName}</h4> : ""}
+              {/* {!sign ? <h4 className="text-white w-20 text-xs sm:text-sm ml-28 mobile:max-sm:ml-28">{data.displayName}</h4> : ""} */}
             </li>
           </ul>
         </div>

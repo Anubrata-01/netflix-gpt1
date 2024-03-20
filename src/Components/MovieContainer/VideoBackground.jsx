@@ -47,7 +47,7 @@ const VideoBackground = ({ videoId}) => {
   }
  
   return (
-    <div className=" h-[350px] relative sm:h-screen -mt-48  sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
+    <div className=" h-[350px] relative sm:h-screen -mt-44  sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${trailerKey}`}
         width="100%"
@@ -72,10 +72,10 @@ const VideoBackground = ({ videoId}) => {
      
       <button
         onClick={handleToggleMute}
-        className="text-white font-normal sm:font-medium mt-40 pt-2 sm:pt-0 sm:mt-0"
+        className="text-white font-normal sm:font-medium mt-36 pt-2 sm:pt-0 sm:mt-0"
         style={{
           position: "absolute",
-          top: "24%",
+          top: "25%",
           right: "80px",
           zIndex: 10,
         }}
