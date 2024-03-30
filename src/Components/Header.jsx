@@ -86,7 +86,7 @@ const Header = () => {
         </div>
         {/*  */}
         <div className=" mt-4 mr-0 sm:mr-10">
-          <ul>
+          <ul className=" flex flex-col sm:flex sm:flex-row">
             <li className=" ml-8 sm:ml-0">
               <div className="flex">
                 {!sign ? (
@@ -127,21 +127,13 @@ const Header = () => {
                       SignIn
                     </Button>
                   ) : (
-                    <Button
-                      marginRight={16}
-                      onClick={handleSignout}
-                      appearance="primary"
-                      intent="danger"
-                      className=" w-16 text-xs p-1 sm:text-base sm:w-full sm:p-0 "
-                    >
-                      SignOut
-                    </Button>
+                    <img src={`https://secure.gravatar.com/avatar/?s=32`} className=" w-[32px] h-[33px] object-cover rounded-md" onClick={handleSignout} alt="btn" />
                   )}
                 </NavLink>
               </div>
             </li>
             <li>
-              {/* {!sign ? <h4 className="text-white w-20 text-xs sm:text-sm ml-28 mobile:max-sm:ml-28">{data.displayName}</h4> : ""} */}
+              {/* {!sign ? <h4 className="text-white w-20 bg-slate-200 text-xs sm:text-sm ml-10 mobile:max-sm:ml-8">{data.displayName}Name</h4> : ""} */}
             </li>
           </ul>
         </div>
@@ -151,3 +143,4 @@ const Header = () => {
 };
 
 export default Header;
+
