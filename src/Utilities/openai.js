@@ -1,8 +1,8 @@
 // node --version # Should be >= 18
 // export default 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Gemini_Api_Key } from "../Components/constant";
-import { setResults } from "../Redux Store/gptSlice";
+import { setResults,storeGptSearchMovie } from "../Redux Store/gptSlice";
 const {
   GoogleGenerativeAI,
   HarmCategory,
@@ -12,7 +12,7 @@ const {
 const MODEL_NAME = "gemini-1.0-pro";
 const API_KEY = Gemini_Api_Key;
 
- const runChat=async(promt,dispatch)=>{
+ const runChat=async(prompt, name, inputValue, dispatch, searchTmdbMovies)=>{
   // const dispatch=useDispatch();
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
@@ -50,10 +50,25 @@ const API_KEY = Gemini_Api_Key;
     ],
   });
 
-  const result = await chat.sendMessage(promt);
+  const result = await chat.sendMessage(prompt);
   const response = result.response;
-  dispatch(setResults(response.text()))
-  console.log(response.text());
+  const Response=response.text();
+  const gptMovies = Response&& Response.split(",");
+  dispatch(setResults(Response))
+  if (!inputValue) {
+    console.log("Please enter a search query.");
+    dispatch(storeGptSearchMovie({ movieNames: null, movieResults: null }));
+    return;
+  }
+  if(gptMovies){
+
+  
+  const gptFetchMovies = await Promise.all(gptMovies.map((movie) => searchTmdbMovies(movie)));
+  const tmdbResults = await Promise.all(gptFetchMovies);
+
+  dispatch(storeGptSearchMovie({ movieNames: gptMovies, movieResults: tmdbResults }));
+  console.log(tmdbResults);
+  }
 }
 // runChat("what is react")
 

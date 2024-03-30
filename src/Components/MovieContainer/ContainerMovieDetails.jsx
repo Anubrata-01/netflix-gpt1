@@ -63,7 +63,7 @@ const ContainerMovieDetails = () => {
       <div className="flex flex-col sm:flex sm:flex-row sm:ml-20">
         <div className="mt-5">
           <img
-            className="rounded-lg w-full h-full object-fill"
+            className="rounded-lg w-full h-auto object-cover sm:object-cover"
             src={Url + poster_path}
             alt="img"
           />

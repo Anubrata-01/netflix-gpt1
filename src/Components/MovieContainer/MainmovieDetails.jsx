@@ -51,7 +51,7 @@ const MainmovieDetails = ({ user, }) => {
        
           <Button
             marginY={7}
-            className="w-14 h-1 text-xs sm:text-base sm:w-auto sm:h-full"
+            className="w-14 h-auto text-xs sm:text-base sm:w-auto sm:h-full mr-2"
             marginRight={12}
             iconBefore={PlayIcon}
             onClick={() => navigate("/player")}

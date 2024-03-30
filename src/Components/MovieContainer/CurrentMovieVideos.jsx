@@ -13,13 +13,13 @@ const CurrentMovieVideos = ({userId}) => {
     console.log("error")
   }
   const trailers = useMemo(() => {
-    return trailer?.map((trailer) => (
-       <TrailerComponent key={trailer.key} trailerkey={trailer?.key} />
+    return trailer?.slice(0, 6).map((trailer) => (
+      <TrailerComponent key={trailer.key} trailerkey={trailer?.key} />
     ));
- }, [trailer]);
+  }, [trailer]);
   return (
-    <div className='ml-52 pb-3 mt-1
-    grid grid-cols-1 gap-2 sm:grid sm:grid-cols-3 sm:gap-2'>
+    <div className='ml-52 pb-3 mt-1 
+       sm:grid sm:grid-cols-3 sm:gap-5 flex gap-4 overflow-scroll no-scrollbar'>
       {trailers}
     </div>
   )
