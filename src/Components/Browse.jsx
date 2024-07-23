@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { Api_options } from "./constant";
 import { Context } from "./context";
 import GptSearchPage from "./GPTSearch/GptSearchPage";
+// import { Loader } from "lucide-react";
+// import { WifiLoaderComponent } from "../Utilities/Loader";
 const LazyMainContainer=React.lazy(()=>import("./MovieContainer/MainContainer"))
 const LazySecondaryContainer=React.lazy(()=>import("./MovieContainer/SecondaryContainer"))
 

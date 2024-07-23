@@ -35,7 +35,7 @@ const ContainerMovieDetails = () => {
   }, [dispatch, movieDetails, isshow, setIsshow]);
 
   if (!movieDetails) {
-    return null;
+    return "Loading...";
   }
 
   const {
