@@ -94,145 +94,76 @@ export function SignInThree() {
   };
   
   return (
-    <section>
-      <div className=" relative left-50 sm:left-80 -top-2 flex items-center justify-center px-10 py-20 sm:px-6 sm:py-12 ">
-        <div className=" w-80 sm:w-full">
-          <div className="mb-2 flex justify-center">
-          </div>
-          <h2 className="text-center text-xl sm:text-2xl font-bold leading-tight text-red-700">
-            {text2}
-          </h2>
-          <div className="flex ml-2 sm:ml-28 w-80 sm:w-full ">
-            <p className="mt-3  sm:ml text-center text-sm text-red-600 ">{text3}</p>
-
-            <button onClick={handleFormbtn} className=" mt-2.5 ml-4">
-              
-               <p className="text-white text-sm">
-               {text1}
-                </p> 
-            </button>
-          </div>
-          <form action="#" method="POST" className="mt-1 sm:mt-5">
-            <div className="space-y-1">
-              {isSignIn ? (
-                ""
-              ) : (
-                <div>
-                  <label
-                    htmlFor=""
-                    className="text-base font-normal sm:font-medium text-white"
-                  >
-                    {" "}
-                    Name{" "}
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      ref={name}
-                      className="flex h-9 w-full sm:w-full sm:h-9 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
-                      type="text"
-                      placeholder="Enter Your Name"
-                    ></input>
-                  </div>
-                </div>
-              )}
-
-              <div>
-                <label htmlFor="" className="text-base font-medium text-white">
-                  {" "}
-                  Email address{" "}
-                </label>
-                <div className="mt-2">
-                  <input
-                    ref={email}
-                    className="flex h-9 w-full sm:w-full sm:h-9 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
-                    type="email"
-                    placeholder="Email"
-                  ></input>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor=""
-                    className="text-base font-medium text-white"
-                  >
-                    {" "}
-                    Password{" "}
-                  </label>
-                    {" "}
-                    {/* Forgot password?{" "} */}
-                    <p className="text-white">
-                    Forgot password?{" "}
-
-                    </p>
-                    
-                </div>
-                <div className="mt-2">
-                  <input
-                    ref={password}
-                    className="flex h-9 w-full sm:w-full sm:h-9 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 text-white"
-                    type="password"
-                    placeholder="Password"
-                  ></input>
-                </div>
-              </div>
-              <p className=" text-red-600 font-semibold">
-                {password ? errorMessage : ""}
-              </p>
-
-              <div className="">
-                <button
-                  onClick={HandleSubmitBtn}
-                  type="button"
-                  className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
-                >
-                  {text} <ArrowRight className="ml-2" size={16} />
-                </button>
-              </div>
+    <section className="flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+    <div className="w-full max-w-md sm:max-w-lg bg-gray-800 p-6 sm:p-10 rounded-lg shadow-md">
+      <div className="mb-4 flex justify-center">
+        {/* Add any header content if needed */}
+      </div>
+      <h2 className="text-center text-2xl font-bold leading-tight text-red-700 sm:text-3xl">
+        {text2}
+      </h2>
+      <div className="flex justify-center mt-4">
+        <p className="text-sm text-center text-red-600">{text3}</p>
+        <button onClick={handleFormbtn} className="ml-4">
+          <p className="text-white text-sm">{text1}</p>
+        </button>
+      </div>
+      <form action="#" method="POST" className="mt-6 space-y-4">
+        {!isSignIn && (
+          <div>
+            <label className="block text-sm font-medium text-white">Name</label>
+            <div className="mt-1">
+              <input
+                ref={name}
+                type="text"
+                placeholder="Enter Your Name"
+                className="w-full h-10 rounded-md border border-gray-300 bg-gray-700 px-3 py-2 text-sm placeholder-gray-400 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
             </div>
-          </form>
-          <div className="mt-2 space-y-2">
-            <button
-              type="button"
-              className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
-            >
-              <span className="mr-2 inline-block">
-                <svg
-                  className="h-6 w-6 text-rose-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
-                </svg>
-              </span>
-              Sign in with Google
-            </button>
-            {
-              !isSignIn?"":(
-            
-            <button
-              type="button"
-              className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
-            >
-              <span className="mr-2 inline-block">
-                <svg
-                  className="h-6 w-6 text-[#2563EB]"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"></path>
-                </svg>
-              </span>
-              Sign in with Facebook
-            </button>
-            )
-              }
+          </div>
+        )}
+        <div>
+          <label className="block text-sm font-medium text-white">Email address</label>
+          <div className="mt-1">
+            <input
+              ref={email}
+              type="email"
+              placeholder="Email"
+              className="w-full h-10 rounded-md border border-gray-300 bg-gray-700 px-3 py-2 text-sm placeholder-gray-400 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
           </div>
         </div>
-      </div>
-    </section>
+        <div>
+          <div className="flex items-center justify-between">
+            <label className="block text-sm font-medium text-white">Password</label>
+            <p className="text-xs text-white cursor-pointer hover:underline">
+              Forgot password?
+            </p>
+          </div>
+          <div className="mt-1">
+            <input
+              ref={password}
+              type="password"
+              placeholder="Password"
+              className="w-full h-10 rounded-md border border-gray-300 bg-gray-700 px-3 py-2 text-sm placeholder-gray-400 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+        {errorMessage && (
+          <p className="text-red-600 font-semibold text-sm">{errorMessage}</p>
+        )}
+        <div>
+          <button
+            onClick={HandleSubmitBtn}
+            type="button"
+            className="w-full inline-flex items-center justify-center rounded-md bg-black px-4 py-2.5 font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            {text} <ArrowRight className="ml-2" size={16} />
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+  
   );
-}
+} 

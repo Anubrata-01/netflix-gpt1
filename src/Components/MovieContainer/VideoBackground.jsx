@@ -1,4 +1,4 @@
-import React, { useEffect, useState,memo } from "react";
+import React, { useEffect, useState, memo, useCallback } from "react";
 import ReactPlayer from "react-player";
 import { VolumeUpIcon } from "evergreen-ui";
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
@@ -6,57 +6,53 @@ import { Api_options } from "../constant";
 import { useDispatch } from "react-redux";
 import { addPlayerTrailer } from "../../Redux Store/movieSlice";
 
-const VideoBackground = ({ videoId}) => {
+const VideoBackground = ({ videoId }) => {
   const [trailerKey, setTrailerKey] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
-  const dispatch=useDispatch()
-  const movieVideo = async () => {
-    try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/movie/${videoId}/videos?lan`,
-        Api_options
-      );
-      const jsonData = await data.json();
-      console.log("API Response:", jsonData);
-      const filteredTrailer = jsonData?.results?.filter(
-        (item) => item?.type === "Trailer"
-      );
-      console.log("Filtered Trailer:", filteredTrailer);
-      if (filteredTrailer && filteredTrailer.length > 0) {
-        const key = filteredTrailer[0]?.key;
-        setTrailerKey(key);
-        dispatch(addPlayerTrailer(key))
-      } else {
-        console.warn("No trailer found for the specified movie.");
-      }
-    } catch (error) {
-      console.error("Error fetching movie video:", error);
-    }
-  };
-
-  const handleToggleMute = () => {
-    setIsMuted(!isMuted);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    movieVideo();
-  }, [videoId]);
+    const fetchMovieVideo = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${videoId}/videos?lan`,
+          Api_options
+        );
+        const data = await response.json();
+        const trailer = data?.results?.find(item => item?.type === "Trailer");
+        
+        if (trailer) {
+          const key = trailer.key;
+          setTrailerKey(key);
+          dispatch(addPlayerTrailer(key));
+        } else {
+          console.warn("No trailer found for the specified movie.");
+        }
+      } catch (error) {
+        console.error("Error fetching movie video:", error);
+      }
+    };
 
-  if (!trailerKey) {
-    return null; // or render a loading spinner/message
-  }
- 
+    fetchMovieVideo();
+  }, [videoId, dispatch]);
+
+  const handleToggleMute = useCallback(() => {
+    setIsMuted(prevIsMuted => !prevIsMuted);
+  }, []);
+
+  if (!trailerKey) return null;
+
   return (
-    <div className=" h-[350px] relative sm:h-screen -mt-44  sm:-mt-28 bg-gradient-to-b from-black to-transparent  ">
+    <div className="h-[350px] sm:h-screen relative -mt-44 sm:-mt-28 bg-gradient-to-b from-black to-transparent">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${trailerKey}`}
         width="100%"
         height="120%"
         className="absolute"
-        playing={true}
+        playing
         muted={isMuted}
         controls={false}
-        loop={true}
+        loop
         config={{
           youtube: {
             playerVars: {
@@ -69,16 +65,9 @@ const VideoBackground = ({ videoId}) => {
           },
         }}
       />
-     
       <button
         onClick={handleToggleMute}
-        className="text-white font-normal sm:font-medium mt-36 pt-2 sm:pt-0 sm:mt-0"
-        style={{
-          position: "absolute",
-          top: "25%",
-          right: "80px",
-          zIndex: 10,
-        }}
+        className="text-white font-medium absolute top-[25%] right-20 z-10 mt-36 pt-2 sm:pt-0 sm:mt-0"
       >
         {isMuted ? (
           <VolumeOffIcon fontSize="large" />
@@ -91,7 +80,6 @@ const VideoBackground = ({ videoId}) => {
 };
 
 export default memo(VideoBackground);
-
 
 
 

@@ -7,6 +7,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { MdAddBox, MdFileDownloadDone } from "react-icons/md";
 import { addToMyList } from "../../Redux Store/movieSlice";
 import useFetchMovieById from "../../CustomHooks/useFetchMovieById";
+import { Loader } from "../Body";
 
 // Lazily import components
 const LazyCastSection = React.lazy(() => import("./CastSection"));
@@ -35,7 +36,7 @@ const ContainerMovieDetails = () => {
   }, [dispatch, movieDetails, isshow, setIsshow]);
 
   if (!movieDetails) {
-    return "Loading...";
+    return <Loader/>;
   }
 
   const {
